@@ -35,14 +35,11 @@ class Program
         Menu menu = new Menu();
         while (true)
         {
-            //  foreach (var line in Design.Bloomi)
-            //{
-            //    Console.WriteLine(line);
-            //}
             menu.Show();
 
         }
 
     }
 }
+
 
