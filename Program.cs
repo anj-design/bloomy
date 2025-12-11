@@ -18,29 +18,23 @@ class Program
 
         InputSimulator simulator = new InputSimulator();
 
-        Thread.Sleep(200); // delay para magawa ng isa isa yung key press
+        Thread.Sleep(50); // delay para magawa ng isa isa yung key press
         simulator.Keyboard.KeyPress(VirtualKeyCode.F11); // full screen
-        Thread.Sleep(200);
+        Thread.Sleep(50);
         simulator.Keyboard.ModifiedKeyStroke(VirtualKeyCode.CONTROL, VirtualKeyCode.SUBTRACT); //zoom out para makita ng buo yung title
 
         // Music.PlayMusic("music2.wav");
         Title.Show();
 
-        Console.Clear();//clear
-
-        foreach (var line in Design.Bloomy)
-        {
-            Console.WriteLine(line);
-        }
         Console.ReadKey();
-
         Console.Clear();
+
         foreach (var line in Design.MotivPage)
         {
             Console.WriteLine(line);
         }
-        Console.ReadKey();
 
+        Console.ReadKey();
         Console.Clear();
 
         Menu menu = new Menu();
