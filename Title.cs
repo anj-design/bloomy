@@ -11,6 +11,7 @@ namespace boom
 
         public static void Show() // method hahaha
         {
+            Console.CursorVisible = false; // para walang nag bblink na curser
             Console.Clear();
             foreach (string line in Design.Bloomy)
             {
