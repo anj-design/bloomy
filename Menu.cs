@@ -23,10 +23,6 @@ namespace ConsoleApp1
         public void Show()
         {
             Console.Clear();
-            foreach (string line in Design.Bloomy)
-            {
-                Console.WriteLine(line);
-            }
 
             ConsoleKey key;
 
