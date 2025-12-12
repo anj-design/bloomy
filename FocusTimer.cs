@@ -13,6 +13,7 @@ namespace MyApp {
 
         public void Start() {
             Console.Clear();
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
 
             Console.Write("\nFocus Minutes: ");
             int focusMin = int.Parse(Console.ReadLine());
@@ -25,14 +26,21 @@ namespace MyApp {
         }
 
         private void RunCountdown(string label, int seconds) {
-            // TIMER User Interface 
+            // --------------------------
+            // TIMER User Interface         
+            // --------------------------
             Load_Background();
 
-            // ACTUAL TIMER
+
+            // --------------------------
+            // ACTUAL TIMES
+            // --------------------------
+            Random random = new Random();
+            int random_number = 1;
+            int division = seconds / 6;
+            int frame = 1;
+
             for (int i = seconds; i >= 0; i--) {
-                //Console.Clear();
-                //Console.WriteLine($"{label}: {i} seconds remaining...");
-                //Console.WriteLine("\n(Press BACKSPACE to exit timer)");
 
                 int minute_output = i / 60;
                 int seconds_output = i - (minute_output * 60);
@@ -40,8 +48,53 @@ namespace MyApp {
 
                 Display_Minute(minute_output.ToString());
                 Display_Second(seconds_output.ToString());
-                Display(Design.flower_1, 85, 10);
+                //int random_number= random.Next(3);
+                if (random_number == 0) {
+                    //Console.WriteLine(seconds - i+ " : " + i +":" + division * frame);
+                    int col = 90;
+                    int line = 10;
+                    if (frame == 1) {
+                        Display(Design.sunflower_1, col, line);
+                    } else if (frame == 2) {
+                        Display(Design.sunflower_2, col, line);
+                    } else if (frame == 3) {
+                        Display(Design.sunflower_3, col, line);
+                    } else if (frame == 4) {
+                        Display(Design.sunflower_4, col, line);
+                    } else if (frame == 5) {
+                        Display(Design.sunflower_5, col, line);
+                    } else if (frame == 6) {
+                        Display(Design.sunflower_6, col, line);
+                    }
+                };
+                
+                if (random_number == 1) {
+                    //Console.WriteLine(seconds - i+ " : " + i +":" + division * frame);
+                    int col = 90;
+                    int line = 10;
+                    if (frame == 1) {
+                        Display(Design.rose_1, col, line);
+                    } else if (frame == 2) {
+                        Display(Design.rose_2, col, line);
+                    } else if (frame == 3) {
+                        Display(Design.rose_3, col, line);
+                    } else if (frame == 4) {
+                        Display(Design.rose_4, col, line);
+                    } else if (frame == 5) {
+                        Display(Design.rose_5, col, line);
+                    } else if (frame == 6) {
+                        Display(Design.rose_6, col, line);
+                    }
+                };
 
+                if (seconds - i >= division * frame) {
+                    frame++;
+                }
+
+
+                // --------------------------
+                // USER INPUT
+                // --------------------------
                 if (Console.KeyAvailable) {
                     var key = Console.ReadKey(true).Key;
 
@@ -56,15 +109,21 @@ namespace MyApp {
                         } else {
                             Load_Background();
                         }
+                    }else if (key == ConsoleKey.M) {
+                        i -= 10;
                     }
                 }
 
-                Thread.Sleep(1000);
+                Thread.Sleep(200);
             }
 
             Console.WriteLine("\nTimer Complete!");
             Console.ReadKey();
         }
+
+
+
+
 
         // --------------------------
         // YES / NO ASCII CONFIRMATION
@@ -115,14 +174,7 @@ namespace MyApp {
         // --------------------------
         // ASCII PRINTER
         // --------------------------
-        private void DisplayAscii(string[] art) {
-            foreach (string line in art)
-                Console.WriteLine(line);
-        }
-
-
-
-        // METHODS FOR DISPLAYING TIME IN ASCII
+        //   - METHODS FOR DISPLAYING TIME IN ASCII
         public static void Load_Background() {
             Console.Clear();
             int line = 10;
