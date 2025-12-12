@@ -17,9 +17,6 @@ namespace MyApp
         {
             Console.Clear();
 
-            // SAFELY CALL THE INPUT ASCII BOX (replace with your own name)
-            DisplayAscii(Design.Bloomi);
-
             Console.Write("\nFocus Minutes: ");
             int focusMin = int.Parse(Console.ReadLine());
 

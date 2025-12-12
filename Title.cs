@@ -11,10 +11,15 @@ namespace boom
 
         public static void Show() // method hahaha
         {
-            Console.Clear();
-            foreach (string line in Design.Bloomy)
+            int x = 0, y = 18;
+            Console.CursorVisible = false; // para walang nag bblink na curser
+
+            foreach (string line in Design.Bloomi)
             {
+                Thread.Sleep(50); // for animation lang
+                Console.SetCursorPosition(x, y);
                 Console.WriteLine(line);
+                y++;
             }
         }
     }
