@@ -21,11 +21,17 @@ namespace MyApp {
             Console.Write("Break Minutes: ");
             int breakMin = int.Parse(Console.ReadLine());
 
-            RunCountdown("FOCUS TIME", focusMin * 60);
-            RunCountdown("BREAK TIME", breakMin * 60);
+            // The last variable (1 or 2) is for timer or break mode toggle
+            RunCountdown("FOCUS TIME", focusMin * 60,1);
+            RunCountdown("BREAK TIME", breakMin * 60,2);
         }
 
-        private void RunCountdown(string label, int seconds) {
+
+
+
+
+
+        private void RunCountdown(string label, int seconds, int mode) {
             // --------------------------
             // TIMER User Interface         
             // --------------------------
@@ -35,61 +41,108 @@ namespace MyApp {
             // --------------------------
             // ACTUAL TIMES
             // --------------------------
-            Random random = new Random();
-            int random_number = 1;
-            int division = seconds / 6;
+
+            // Declaring variables
+            int division = 0;
             int frame = 1;
 
+            // Generate a random number for a random flower animation
+            Random random = new Random();
+            int random_number = random.Next(3);
+
+            // Timer Process
             for (int i = seconds; i >= 0; i--) {
 
                 int minute_output = i / 60;
                 int seconds_output = i - (minute_output * 60);
-                //Console.WriteLine(minute_output + " : "+ i +":" + seconds_output);
 
+                // Display minute and second every tick
                 Display_Minute(minute_output.ToString());
                 Display_Second(seconds_output.ToString());
-                //int random_number= random.Next(3);
-                if (random_number == 0) {
-                    //Console.WriteLine(seconds - i+ " : " + i +":" + division * frame);
-                    int col = 90;
-                    int line = 10;
-                    if (frame == 1) {
-                        Display(Design.sunflower_1, col, line);
-                    } else if (frame == 2) {
-                        Display(Design.sunflower_2, col, line);
-                    } else if (frame == 3) {
-                        Display(Design.sunflower_3, col, line);
-                    } else if (frame == 4) {
-                        Display(Design.sunflower_4, col, line);
-                    } else if (frame == 5) {
-                        Display(Design.sunflower_5, col, line);
-                    } else if (frame == 6) {
-                        Display(Design.sunflower_6, col, line);
-                    }
-                };
-                
-                if (random_number == 1) {
-                    //Console.WriteLine(seconds - i+ " : " + i +":" + division * frame);
-                    int col = 90;
-                    int line = 10;
-                    if (frame == 1) {
-                        Display(Design.rose_1, col, line);
-                    } else if (frame == 2) {
-                        Display(Design.rose_2, col, line);
-                    } else if (frame == 3) {
-                        Display(Design.rose_3, col, line);
-                    } else if (frame == 4) {
-                        Display(Design.rose_4, col, line);
-                    } else if (frame == 5) {
-                        Display(Design.rose_5, col, line);
-                    } else if (frame == 6) {
-                        Display(Design.rose_6, col, line);
-                    }
-                };
 
-                if (seconds - i >= division * frame) {
-                    frame++;
+                if (mode == 1) {
+
+                    // FOCUS TIMER MODE
+                    if (random_number == 0) {
+                        division = seconds / 6;
+                        int col = 90;
+                        int line = 10;
+                        if (frame == 1) {
+                            Display(Design.sunflower_1, col, line);
+                        } else if (frame == 2) {
+                            Display(Design.sunflower_2, col, line);
+                        } else if (frame == 3) {
+                            Display(Design.sunflower_3, col, line);
+                        } else if (frame == 4) {
+                            Display(Design.sunflower_4, col, line);
+                        } else if (frame == 5) {
+                            Display(Design.sunflower_5, col, line);
+                        } else if (frame == 6) {
+                            Display(Design.sunflower_6, col, line);
+                        }
+                    }else if (random_number == 1) {
+                        division = seconds / 6;
+                        int col = 97;
+                        int line = 10;
+                        if (frame == 1) {
+                            Display(Design.rose_1, col, line);
+                        } else if (frame == 2) {
+                            Display(Design.rose_2, col, line);
+                        } else if (frame == 3) {
+                            Display(Design.rose_3, col, line);
+                        } else if (frame == 4) {
+                            Display(Design.rose_4, col, line);
+                        } else if (frame == 5) {
+                            Display(Design.rose_5, col, line);
+                        } else if (frame == 6) {
+                            Display(Design.rose_6, col, line);
+                        }
+                    }else if(random_number == 2) {
+                        division = seconds / 8;
+                        int col = 80;
+                        int line = 10;
+                        if (frame == 1) {
+                            Display(Design.bloom_1, col, line);
+                        } else if (frame == 2) {
+                            Display(Design.bloom_2, col, line);
+                        } else if (frame == 3) {
+                            Display(Design.bloom_3, col, line);
+                        } else if (frame == 4) {
+                            Display(Design.bloom_4, col, line);
+                        } else if (frame == 5) {
+                            Display(Design.bloom_5, col, line);
+                        } else if (frame == 6) {
+                            Display(Design.bloom_6, col, line);
+                        } else if (frame == 7) {
+                            Display(Design.bloom_7, col, line);
+                        } else if (frame == 8) {
+                            Display(Design.bloom_8, col, line);
+                        }
+                    };
+
+                    // for moving a frame logic
+                    if (seconds - i >= division * frame) {
+                        frame++;
+                    }
+
+
+                } else if (mode == 2) {
+                    
+                    // BREAK TIMER MODE
+                    int col = 84;
+                    int line = 6;
+                    if (frame == 1) {
+                        Display(Design.sleeping_cat_1, col, line);
+                        frame = 2;
+
+                    } else if (frame == 2) {
+                        Display(Design.sleeping_cat_2, col, line);
+                        frame = 1;
+                    }
+                    // changing frame every second
+
                 }
+
 
 
                 // --------------------------
@@ -109,17 +162,36 @@ namespace MyApp {
                         } else {
                             Load_Background();
                         }
-                    }else if (key == ConsoleKey.M) {
+                    } else if (key == ConsoleKey.M) {
                         i -= 10;
                     }
                 }
 
-                Thread.Sleep(200);
+                Thread.Sleep(50);
             }
 
-            Console.WriteLine("\nTimer Complete!");
+
+            // Display "DONE" on timer
+            Display_Minute("DO");
+            Display_Second("NE");
+            Console.SetCursorPosition(32-4, 39);
+            Console.WriteLine(Design.MAGENTA + "Press any key to proceed!" + Design.RESET);
             Console.ReadKey();
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -171,10 +243,28 @@ namespace MyApp {
             }
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         // --------------------------
         // ASCII PRINTER
         // --------------------------
-        //   - METHODS FOR DISPLAYING TIME IN ASCII
+        //   - Mothods for displaying ASCII Timer and Art
         public static void Load_Background() {
             Console.Clear();
             int line = 10;
@@ -234,6 +324,9 @@ namespace MyApp {
                 case "9":
                     Display(Design.a9, 24, line);
                     break;
+                case "D":
+                    Display(Design.aD, 24, line);
+                    break;
             }
 
             switch (minute.ToString().Substring(1, 1)) {
@@ -266,6 +359,9 @@ namespace MyApp {
                     break;
                 case "9":
                     Display(Design.a9, 40, line);
+                    break;
+                case "O":
+                    Display(Design.aO, 40, line);
                     break;
             }
         }
@@ -307,6 +403,9 @@ namespace MyApp {
                 case "9":
                     Display(Design.a9, 24, line);
                     break;
+                case "N":
+                    Display(Design.aN, 24, line);
+                    break;
             }
 
             switch (second.ToString().Substring(1, 1)) {
@@ -339,6 +438,9 @@ namespace MyApp {
                     break;
                 case "9":
                     Display(Design.a9, 40, line);
+                    break;
+                case "E":
+                    Display(Design.aE, 40, line);
                     break;
             }
         }
