@@ -29,6 +29,7 @@ namespace MyApp
             @" `-'   `----'  `---' `-----'`----'       `-' ` `-'`-'`-' `-'`-----'  `-'  `----'`----' "
 };
 
+<<<<<<< HEAD
             public static string[] BreakBanner = new string[]
             {
             @"                         .-.   .-. .-.   .----.    .-. .-.    .---.                     ",
@@ -42,6 +43,21 @@ namespace MyApp
             };
 
             public void Start()
+=======
+            Console.Write("\nFocus Minutes: ");
+            int focusMin = int.Parse(Console.ReadLine());
+
+            Console.Write("Break Minutes: ");
+            int breakMin = int.Parse(Console.ReadLine());
+
+            RunCountdown("FOCUS TIME", focusMin * 60);
+            RunCountdown("BREAK TIME", breakMin * 60);
+        }
+
+        private void RunCountdown(string label, int seconds)
+        {
+            for (int i = seconds; i >= 0; i--)
+>>>>>>> 0a95196a9475b28693bdb40b1e93ad594eda6996
             {
                 Console.Clear();
                 Console.OutputEncoding = System.Text.Encoding.UTF8;
@@ -564,5 +580,19 @@ namespace MyApp
                 }
             }
         }
+<<<<<<< HEAD
+=======
+
+        // --------------------------
+        // ASCII PRINTER
+        // --------------------------
+        private void DisplayAscii(string[] art)
+        {
+            foreach (string line in art)
+                Console.WriteLine(line);
+        }
+
+        // ror
+>>>>>>> 0a95196a9475b28693bdb40b1e93ad594eda6996
     }
 }
