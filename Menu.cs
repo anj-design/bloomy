@@ -23,10 +23,6 @@ namespace ConsoleApp1
         public void Show()
         {
             Console.Clear();
-            foreach (string line in Design.Bloomy)
-            {
-                Console.WriteLine(line);
-            }
 
             ConsoleKey key;
 
@@ -58,7 +54,7 @@ namespace ConsoleApp1
             // ----------------------------
             if (selectedIndex == 0) // MenuStart selected
             {
-                FocusTimer timer = new(10); // change seconds here
+                var timer = new FocusTimer(10); // change seconds here
                 timer.Start();
 
                 Console.WriteLine("\nPress any key to return to menu...");
