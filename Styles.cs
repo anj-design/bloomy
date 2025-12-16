@@ -6,22 +6,219 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    internal class Design
+    public class Styles
     {
+        public void CenterText(string text)
+        {
+            int windowWidth = Console.WindowWidth;
+            int padding = Math.Max(0, (windowWidth - text.Length) / 2);
+            Console.WriteLine(new string(' ', padding) + text);
+        }
+        public void ShowWelcomeScreen()
+        {
+            Console.Clear();
+            Console.WriteLine();
+
+            // Beautiful flower garden welcome eme kinuha lng naman sa ascii whahahaha
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            CenterText("           .-\"\"\"\"-. .-\"\"\"\"-. .-\"\"\"\"-. .-\"\"\"\"-. .-\"\"\"\"-.        ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            CenterText("          /  ()  \\_/  ()  \\_/  ()  \\_/  ()  \\_/  ()  \\       ");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            CenterText("         |  ____    ____    ____    ____    ____    |      ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            CenterText("          \\      \\/      \\/      \\/      \\/      /       ");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            CenterText("           '-..-'  '-..-'  '-..-'  '-..-'  '-..-'         ");
+            Console.ResetColor();
+
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            CenterText("╔══════════════════════════════════════════════════════╗");
+            CenterText("║         🌸  2 0 2 5   C A L E N D A R  🌸          ║");
+            CenterText("║              ~ Flower Garden Edition ~               ║");
+            CenterText("╚══════════════════════════════════════════════════════╝");
+            Console.ResetColor();
+
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Green;
+            CenterText("          \\\\|//     \\\\|//     \\\\|//     \\\\|//          ");
+            CenterText("           \\|/       \\|/       \\|/       \\|/           ");
+            CenterText("            |         |         |         |            ");
+            CenterText("       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  ");
+            Console.ResetColor();
+
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.White;
+            CenterText("Use ◄ LEFT and RIGHT ► arrow keys to navigate months");
+            CenterText("Press ESC or Q to exit the calendar");
+            Console.ResetColor();
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            CenterText("Press any key to start your journey...");
+            Console.ResetColor();
+            Console.ReadKey(true);
+        }
+
+        public void ShowNavigation(int current, int max)
+        {
+            Console.WriteLine();
+
+            // Bottom flower garden im coookeddd
+            Console.ForegroundColor = ConsoleColor.Green;
+            CenterText("    \\\\|//   \\\\|//   \\\\|//   \\\\|//   \\\\|//   \\\\|//   \\\\|//");
+            CenterText("     \\|/     \\|/     \\|/     \\|/     \\|/     \\|/     \\|/");
+            CenterText("      |       |       |       |       |       |       |");
+            CenterText("  ========================================================");
+            Console.ResetColor();
+
+            Console.WriteLine();
+            CenterText("════════════════════════════════════════════════════════");
+            Console.ForegroundColor = ConsoleColor.Gray;
+
+            string leftArrow = current > 0 ? "◄◄◄ PREVIOUS" : "            ";
+            string rightArrow = current < max ? "NEXT ►►►" : "        ";
+            string position = $"  [{current + 1} of {max + 1}]  ";
+
+            CenterText($"    {leftArrow}{position}{rightArrow}");
+            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine();
+            CenterText("Press ESC or Q to exit");
+            Console.ResetColor();
+        }
+
+        public void ShowExitScreen()
+        {
+            Console.Clear();
+            Console.WriteLine();
+            Console.WriteLine();
+
+            // Farewell flower bouquet
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            CenterText("              @@@@@   @@@@@   @@@@@   @@@@@");
+            CenterText("             @@@@@@@  @@@@@  @@@@@@@  @@@@@");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            CenterText("            @@@  @@@@ @@@@@ @@@@  @@@ @@@@@");
+            CenterText("             @@@  @@@ @ @@@ @@@  @@@  @@@");
+            Console.ForegroundColor = ConsoleColor.Green;
+            CenterText("               \\  \\ | | | | | /  /");
+            CenterText("                \\  \\| | | | |/  /");
+            CenterText("                 \\  \\| | | |/  /");
+            CenterText("                  \\  \\|_|_|/  /");
+            CenterText("                   \\   |||   /");
+            CenterText("                    \\  |||  /");
+            CenterText("                     \\_|||_/");
+            CenterText("                      |||||");
+            CenterText("                     _|||||_");
+            Console.ResetColor();
+
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Cyan; // ending ;>
+            CenterText("╔══════════════════════════════════════════════════════╗");
+            CenterText("║                                                      ║");
+            CenterText("║       Thank you for using the 2025 Calendar!        ║");
+            CenterText("║                                                      ║");
+            CenterText("║           🌷 Have a blooming wonderful year! 🌷       ║");
+            CenterText("║                                                      ║");
+            CenterText("╚══════════════════════════════════════════════════════╝");
+            Console.ResetColor();
+            Console.WriteLine();
+            Console.WriteLine();
+            CenterText("Press any key to exit...");
+            Console.ReadKey();
+        }
+        public void DrawCalendar(string monthName, int startDay, int totalDays, int monthNumber)
+        {
+            // Top flower decoration
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            CenterText("        .-\"\"\"\"-. .-\"\"\"\"-. .-\"\"\"\"-. .-\"\"\"\"-. .-\"\"\"\"-.    ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            CenterText("       /  ()  \\_/  ()  \\_/  ()  \\_/  ()  \\_/  ()  \\   ");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            CenterText("      |  ____    ____    ____    ____    ____    |  ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            CenterText("       \\      \\/      \\/      \\/      \\/      /   ");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            CenterText("        '-..-'  '-..-'  '-..-'  '-..-'  '-..-'     ");
+            Console.ResetColor();
+            Console.WriteLine();
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            CenterText($"      {monthName} 2025  🌺  Month {monthNumber} of 12");
+            Console.ResetColor();
+            Console.WriteLine();
+
+            // Calendar frame top
+            Console.ForegroundColor = ConsoleColor.White;
+            CenterText("  __| |_____________________________________________________________________________| |__  ");
+            CenterText(" (___   ____SUNDAY_______MONDAY______TUESDAY_____WEDNESDAY____THURSDAY_____FRIDAY______SATURDAY___  __) ");
+            Console.ResetColor();
+
+            // Draw calendar grid
+            int dayCounter = 1;
+
+            for (int week = 0; week < 6; week++)
+            {
+                // Empty space rows
+                for (int row = 0; row < 6; row++)
+                {
+                    string line = "     | |";
+
+                    for (int day = 0; day < 7; day++)
+                    {
+                        int currentDay = week * 7 + day + 1 - startDay;
+
+                        if (row == 5 && currentDay > 0 && currentDay <= totalDays)
+                        {
+                            line += $" {currentDay,2}.".PadRight(16) + "|";
+                        }
+                        else
+                        {
+                            line += "                |";
+                        }
+                    }
+                    line += " |    ";
+
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    CenterText(line);
+                    Console.ResetColor();
+                }
+
+                // Separator line
+                if (week < 5)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    CenterText("     | |################################################################################| |    ");
+                    Console.ResetColor();
+                }
+
+                // Check if we've printed all days
+                if (week * 7 + 7 - startDay >= totalDays)
+                    break;
+            }
+
+            // Calendar frame bottom pero yambao pogi promise
+            Console.ForegroundColor = ConsoleColor.White;
+            CenterText("  __| |_____________________________________________________________________________| |__  ");
+            CenterText(" (__  ______________________________________________________________________________   __) ");
+            CenterText("     | |                                                                            | |    ");
+            Console.ResetColor();
+        }
 
 
         // --------------------------
         // COLOR
         // --------------------------
 
-        public static string RESET = "\u001b[0m";
-        public static string MAGENTA = "\u001b[35m";
+        public  string RESET = "\u001b[0m";
+        public  string MAGENTA = "\u001b[35m";
 
 
         // --------------------------
         // TITLE
         // --------------------------
-        public static string[] Bloomi = {
+        public  string[] Bloomi = {
  @"    ┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐ ",
  @"    │   _______             .---.                 ,-----.                ,-----.            ,---.    ,---.        .-./`)          ________            ____     __  │ ",
  @"    │  \  ____  \           | ,_|               .'  .-,  '.            .'  .-,  '.          |    \  /    |        \ .-.')        |        |           \   \   /  / │ ",
@@ -38,7 +235,7 @@ namespace ConsoleApp1
 
         }; // ror
 
-        public static string[] MotivPage = {
+        public  string[] MotivPage = {
  @"                                                                                                                                                                     ",
  @"                                                                                                                                                                     ",
  @"           /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\              ",
@@ -90,19 +287,19 @@ namespace ConsoleApp1
         // --------------------------
         // MENU
         // --------------------------
-        public static string[] MenuStart = {
+        public string[] MenuStart = {
 @"                                              ____  ____  __   ____  ____    ____  __     ____  __    ___  _  _  ____                                                 ",
 @"                                             / ___)(_  _)/ _\ (  _ \(_  _)  (_  _)/  \   (  __)/  \  / __)/ )( \/ ___)                                                ",
 @"                                             \___ \  )( /    \ )   /  )(      )( (  O )   ) _)(  O )( (__ ) \/ (\___ \                                                ",
 @"                                             (____/ (__)\_/\_/(__\_) (__)    (__) \__/   (__)  \__/  \___)\____/(____/                                                ",
         };
-        public static string[] MenuHistory = {
+        public string[] MenuHistory = {
 @"                                                          _  _    __    ____    ____     __     ____    _  _                                                            ",
 @"                                                         / )( \  (  )  / ___)  (_  _)   /  \   (  _ \  ( \/ )                                                           ",
 @"                                                         ) __ (   )(   \___ \    )(    (  O )   )   /   )  /                                                            ",
 @"                                                         \_)(_/  (__)  (____/   (__)    \__/   (__\_)  (__/                                                             "
         };
-        public static string[] Exit = {
+        public string[] Exit = {
 @"                                                                  ____    _  _    __    ____                                                                            ",
 @"                                                                 (  __)  ( \/ )  (  )  (_  _)                                                                           ",
 @"                                                                  ) _)    )  (    )(     )(                                                                             ",
@@ -115,7 +312,7 @@ namespace ConsoleApp1
         // --------------------------
         // FOCUS TIMER
         // --------------------------
-        public static string[] YesNoQuestion = {
+        public  string[] YesNoQuestion = {
 @"                                                                                                                                                       ",
 @"            .-""-,-""-.          .-""-,-""-.           .-""-,-""-.          .-""-,-""-.          .-""-,-""-.         .-""-,-""-.         .-""-,-""-.                ",
 @"      _.-._(         ).-._.-._(         ).-._.--._(         ).-._ -._(         ).-._ -._(         ).-._-._(         ).-. -._(         ).-._.-._       ",
@@ -142,7 +339,7 @@ namespace ConsoleApp1
 @"                                                                                                                                                       "
 };
 
-        public static string[] FocusInputBox = {
+        public  string[] FocusInputBox = {
 @"   ┌───────────────────────────┐",
 @"   │   ENTER FOCUS MINUTES:    │",
 @"   └───────────────────────────┘",
@@ -151,7 +348,7 @@ namespace ConsoleApp1
 @"   └───────────────────────────┘"
         };
 
-        public static string[] YesSelected =
+        public  string[] YesSelected =
 {
 @"┌──────────────────────┐",
 @"│   _  _   ___   ___   │",
@@ -162,7 +359,7 @@ namespace ConsoleApp1
 @"└──────────────────────┘"
 };
 
-        public static string[] NoSelected =
+        public  string[] NoSelected =
 {
 @"┌───────────────────┐",
 @"│    _ _    ___     │",
@@ -174,7 +371,7 @@ namespace ConsoleApp1
 };
 
 
-        public static string[] a0 = {
+        public  string[] a0 = {
         @"  .-```````-.  ",
         @" / ,```````. \ ",
         @" |/ .-./ )  \| ",
@@ -186,7 +383,7 @@ namespace ConsoleApp1
         @"  '._______.'  "
         };
 
-        public static string[] a1 = {
+        public  string[] a1 = {
         @"        ,---.  ",
         @"       /_   |  ",
         @"         ,_ |  ",
@@ -198,7 +395,7 @@ namespace ConsoleApp1
         @"        '---'  "
         };
 
-        public static string[] a2 = {
+        public  string[] a2 = {
         @"    .`````-.   ",
         @"   /   ,-.  \  ",
         @"  (___/  |   | ",
@@ -210,7 +407,7 @@ namespace ConsoleApp1
         @" (_,_)-------' "
         };
 
-        public static string[] a3 = {
+        public  string[] a3 = {
         @"    .-'''-.    ",
         @"   /   _   \   ",
         @"  |__/` '.  |  ",
@@ -222,7 +419,7 @@ namespace ConsoleApp1
         @"   `-..__.-'   "
         };
 
-        public static string[] a4 = {
+        public  string[] a4 = {
         @"      ,---.   ",
         @"     /,--.|   ",
         @"    //_  ||   ",
@@ -234,7 +431,7 @@ namespace ConsoleApp1
         @"        '-'   "
         };
 
-        public static string[] a5 = {
+        public  string[] a5 = {
         @"  ,--------.   ",
         @"  |   _____|   ",
         @"  |  )         ",
@@ -247,7 +444,7 @@ namespace ConsoleApp1
         };
 
 
-        public static string[] a6 = {
+        public  string[] a6 = {
         @"    .------.   ",
         @"   /  .-.   \  ",
         @"  /  /   `--'  ",
@@ -259,7 +456,7 @@ namespace ConsoleApp1
         @"   `...__..'   "
         };
 
-        public static string[] a7 = {
+        public  string[] a7 = {
         @" ,----------. ",
         @"'..-------,(  ",
         @"    _ _   //  ",
@@ -271,7 +468,7 @@ namespace ConsoleApp1
         @"   `---'      "
         };
 
-        public static string[] a8 = {
+        public  string[] a8 = {
         @"   .-''''-.    ",
         @"  /  _--.  \   ",
         @"  |_( )_ ' |   ",
@@ -283,7 +480,7 @@ namespace ConsoleApp1
         @"   `-....-'    "
         };
 
-        public static string[] a9 = {
+        public  string[] a9 = {
         @"     .-````-.  ",
         @"    /  _ _   \ ",
         @"   |  ( ' )  | ",
@@ -295,7 +492,7 @@ namespace ConsoleApp1
         @"     )_____.'  "
         };
 
-        public static string[] aD = {
+        public  string[] aD = {
         @"   ______      ",
         @"  |    _ `''.  ",
         @"  | _ | ) _  \ ",
@@ -307,7 +504,7 @@ namespace ConsoleApp1
         @"  '-----'`     "
         };
 
-        public static string[] aO = {
+        public  string[] aO = {
         @"    ,-----.     ",
         @"  .'  .-,  '.   ",
         @" / ,-.|  \ _ \  ",
@@ -319,7 +516,7 @@ namespace ConsoleApp1
         @"    '-----'     "
         };
 
-        public static string[] aN = {
+        public  string[] aN = {
         @"  ,---.   .--. ",
         @"  |    \  |  | ",
         @"  |  ,  \ |  | ",
@@ -331,7 +528,7 @@ namespace ConsoleApp1
         @"  '--'    '--' ",
         };
 
-        public static string[] aE = {
+        public  string[] aE = {
         @"     .-''-.    ",
         @"    .'_ _   \  ",
         @"   / ( ` )   ' ",
@@ -343,7 +540,7 @@ namespace ConsoleApp1
         @"     `'-..-'   "
         };
 
-        public static String[] flower_design = {
+        public  String[] flower_design = {
         @"    (_\_)",
         @"   (__<_{}",
         @"    (_/_)",
@@ -355,7 +552,7 @@ namespace ConsoleApp1
         @" ^`^`^`^`^`^"
         };
 
-        public static string[] header =
+        public  string[] header =
         {
         @"                         _  ",
         @" |_  |  _   _  ._ _  o _|_  ",
@@ -363,7 +560,7 @@ namespace ConsoleApp1
         @"                          / "
         };
 
-        public static string[] bg =
+        public  string[] bg =
         {
             @"┌───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐ ",
             @"│                                                                                                                                                                       │ ",
@@ -434,7 +631,7 @@ namespace ConsoleApp1
         // --------------------------
         // ANIMATION
         // --------------------------
-        public static string[] rose_1 = {
+        public  string[] rose_1 = {
         @"                          ",
         @"                          ",
         @"                          ",
@@ -472,7 +669,7 @@ namespace ConsoleApp1
         @"⠂⠀⠀⡂⡀⠂⠈⡎⠀⠀⠀⠀⠀⠘⠄⠀⠀⠀⠙⠀⠀⠈⠑⠒⠬⠷⠄⠀⠀⠁⠑⠛⠒⠀⠈"
         };
 
-        public static string[] rose_2 = {
+        public  string[] rose_2 = {
         @"                          ",
         @"                          ",
         @"                          ",
@@ -510,7 +707,7 @@ namespace ConsoleApp1
         @"⠂⠀⠀⡂⡀⠂⠈⡎⠀⠀⠀⠀⠀⠘⠄⠀⠀⠀⠙⠀⠀⠈⠑⠒⠬⠷⠄⠀⠀⠁⠑⠛⠒⠀⠈"
         };
 
-        public static string[] rose_3 = {
+        public  string[] rose_3 = {
         @"                                   ",
         @"                                   ",
         @"                                   ",
@@ -548,7 +745,7 @@ namespace ConsoleApp1
         @"⠂⠀⠀⡂⡀⠂⠈⡎⠀⠀⠀⠀⠀⠘⠄⠀⠀⠀⠙⠀⠀⠈⠑⠒⠬⠷⠄⠀⠀⠁⠑⠛⠒⠀⠈"
 };
 
-        public static string[] rose_4 = {
+        public  string[] rose_4 = {
         @"                                   ",
         @"                                   ",
         @"                                   ",
@@ -586,7 +783,7 @@ namespace ConsoleApp1
         @"⠂⠀⠀⡂⡀⠂⠈⡎⠀⠀⠀⠀⠀⠘⠄⠀⠀⠀⠙⠀⠀⠈⠑⠒⠬⠷⠄⠀⠀⠁⠑⠛⠒⠀⠈"
         };
 
-        public static string[] rose_5 = {
+        public  string[] rose_5 = {
         @"                              ",
         @"                              ",
         @"                              ",
@@ -625,7 +822,7 @@ namespace ConsoleApp1
         };
 
 
-        public static string[] rose_6 = {
+        public  string[] rose_6 = {
         @"                                       ",
         @"                                       ",
         @"                                       ",
@@ -666,7 +863,7 @@ namespace ConsoleApp1
 
 
 
-        public static string[] sunflower_1 = {
+        public  string[] sunflower_1 = {
         @"                       ",
         @"                       ",
         @"                       ",
@@ -704,7 +901,7 @@ namespace ConsoleApp1
         @"⠂⠀⠀⡂⡀⠂⠈⡎⠀⠀⠀⠀⠀⠘⠄⠀⠀⠀⠙⠀⠀⠈⠑⠒⠬⠷⠄⠀⠀⠁⠑⠛⠒⠀⠈"
 };
 
-        public static string[] sunflower_2 = {
+        public  string[] sunflower_2 = {
         @"                          ",
         @"                          ",
         @"                          ",
@@ -742,7 +939,7 @@ namespace ConsoleApp1
         @"⠂⠀⠀⡂⡀⠂⠈⡎⠀⠀⠀⠀⠀⠘⠄⠀⠀⠀⠙⠀⠀⠈⠑⠒⠬⠷⠄⠀⠀⠁⠑⠛⠒⠀⠈"
 };
 
-        public static string[] sunflower_3 = {
+        public  string[] sunflower_3 = {
         @"                                ",
         @"                                ",
         @"                                ",
@@ -781,7 +978,7 @@ namespace ConsoleApp1
         };
 
 
-        public static string[] sunflower_4 = {
+        public  string[] sunflower_4 = {
         @"                                    ",
         @"                   ⣾⠁                ",
         @"                ⢠⠘⣷⣾⠁                ",
@@ -819,7 +1016,7 @@ namespace ConsoleApp1
         @"⠂⠀⠀⡂⡀⠂⠈⡎⠀⠀⠀⠀⠀⠘⠄⠀⠀⠀⠙⠀⠀⠈⠑⠒⠬⠷⠄⠀⠀⠁⠑⠛⠒⠀⠈"
 };
 
-        public static string[] sunflower_5 = {
+        public  string[] sunflower_5 = {
         @"                                                  ",
         @"                                                  ",
         @"                         ⢀⡾⢷⡄                     ",
@@ -858,7 +1055,7 @@ namespace ConsoleApp1
 };
 
 
-        public static string[] sunflower_6 = {
+        public  string[] sunflower_6 = {
         @"          ⣤⡀  ⣷⡄ ⢀⣷                            ",
         @"        ⣤⣀⣀ ⠐⣿⠙⢦⣼⡃⠉⢦⡼⠏⣇⣀⣼⡇  ⡀                  ",
         @"        ⠹⡄ ⠉⠑⢿  ⣏  ⢸⠁ ⢿⡿⢣⢹⣠⠴⣿                  ",
@@ -896,7 +1093,7 @@ namespace ConsoleApp1
         @"⠀⠀⡐⠱⡀⠀⢀⠌⠀⠀⠀⠒⢰⡀⠀⠑⢄⡇⠀⠑⡀⠈⠑⠒⠬⠷⠄⠀⠀⠁⠑⠛⠒⠈"
          };
 
-        public static string[] bloom_1 = {
+        public  string[] bloom_1 = {
         @"                                                                ",
         @"                                                                ",
         @"                                                                ",
@@ -935,7 +1132,7 @@ namespace ConsoleApp1
         };
 
 
-        public static string[] bloom_2 = {
+        public  string[] bloom_2 = {
             @"                                                        ",
             @"                                                        ",
             @"                                                        ",
@@ -973,7 +1170,7 @@ namespace ConsoleApp1
             @"⠂⠀⠀⡂⡀⠂⠈⡎⠀⠀⠀⠀⠀⠘⠄⠀⠀⠀⠙⠀⠀⠈⠑⠒⠬⠷⠄⠀⠀⠁⠑⠛⠒⠀⠂⠀⠀⡂⡀⠂⠈⡎⠀⠀⠀⠀⠀⠘⠄⠀⠀⠀⠙⠀⠀⠈⠑⠒⠬⠷⠄⠀⠀⠁⠑⠛⠈"
         };
 
-        public static string[] bloom_3 = {
+        public  string[] bloom_3 = {
             @"                                              ",
             @"                                              ",
             @"                                              ",
@@ -1011,7 +1208,7 @@ namespace ConsoleApp1
             @"⠂⠀⠀⡂⡀⠂⠈⡎⠀⠀⠀⠀⠀⠘⠄⠀⠀⠀⠙⠀⠀⠈⠑⠒⠬⠷⠄⠀⠀⠁⠑⠛⠒⠀⠂⠀⠀⡂⡀⠂⠈⡎⠀⠀⠀⠀⠀⠘⠄⠀⠀⠀⠙⠀⠀⠈⠑⠒⠬⠷⠄⠀⠀⠁⠑⠛⠈"
         };
 
-        public static string[] bloom_4 = {
+        public  string[] bloom_4 = {
             @"                                                        ",
             @"                                                        ",
             @"                                                        ",
@@ -1049,7 +1246,7 @@ namespace ConsoleApp1
             @"⠂⠀⠀⡂⡀⠂⠈⡎⠀⠀⠀⠀⠀⠘⠄⠀⠀⠀⠙⠀⠀⠈⠑⠒⠬⠷⠄⠀⠀⠁⠑⠛⠒⠀⠂⠀⠀⡂⡀⠂⠈⡎⠀⠀⠀⠀⠀⠘⠄⠀⠀⠀⠙⠀⠀⠈⠑⠒⠬⠷⠄⠀⠀⠁⠑⠛⠈"
         };
 
-        public static string[] bloom_5 = {
+        public  string[] bloom_5 = {
             @"                                                     ",
             @"                                                     ",
             @"                                                     ",
@@ -1089,7 +1286,7 @@ namespace ConsoleApp1
         };
 
 
-        public static string[] bloom_6 = {
+        public  string[] bloom_6 = {
             @"                                                                         ",
             @"                                                                         ",
             @"                                                                         ",
@@ -1127,7 +1324,7 @@ namespace ConsoleApp1
             @"⠂⠀⠀⡂⡀⠂⠈⡎⠀⠀⠀⠀⠀⠘⠄⠀⠀⠀⠙⠀⠀⠈⠑⠒⠬⠷⠄⠀⠀⠁⠑⠛⠒⠀⠂⠀⠀⡂⡀⠂⠈⡎⠀⠀⠀⠀⠀⠘⠄⠀⠀⠀⠙⠀⠀⠈⠑⠒⠬⠷⠄⠀⠀⠁⠑⠛⠈"
         };
 
-        public static string[] bloom_7 = {
+        public  string[] bloom_7 = {
             @"                                                                             ",
             @"                                                                             ",
             @"                                                                             ",
@@ -1165,7 +1362,7 @@ namespace ConsoleApp1
             @"⠂⠀⠀⡂⡀⠂⠈⡎⠀⠀⠀⠀⠀⠘⠄⠀⠀⠀⠙⠀⠀⠈⠑⠒⠬⠷⠄⠀⠀⠁⠑⠛⠒⠀⠂⠀⠀⡂⡀⠂⠈⡎⠀⠀⠀⠀⠀⠘⠄⠀⠀⠀⠙⠀⠀⠈⠑⠒⠬⠷⠄⠀⠀⠁⠑⠛⠈"
         };
 
-        public static string[] bloom_8 = {
+        public  string[] bloom_8 = {
             @"                                                                             ",
             @"                                                                             ",
             @"                                                                             ",
@@ -1205,7 +1402,7 @@ namespace ConsoleApp1
 
         };
 
-        public static string[] sleeping_cat_2 = {
+        public  string[] sleeping_cat_2 = {
             @"                      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⣀⣀⣀⣀⣀⡀⠀             ",
             @"                      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠉⠉⠉⠉⢉⣿⠏⠀⠀             ",
             @"                      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡾⠃⠀⠀⠀             ",
@@ -1250,7 +1447,7 @@ namespace ConsoleApp1
             @"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⡇⠀⠀⠀⠀⣿⣿  "
         };
 
-        public static string[] sleeping_cat_1 = {
+        public  string[] sleeping_cat_1 = {
             @"                                                             ",
             @"                                                             ",
             @"                                                             ",

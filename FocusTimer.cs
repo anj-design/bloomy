@@ -1,15 +1,23 @@
 ﻿using System;
+using System.Globalization;
 using System.Reflection.PortableExecutable;
 using System.Threading;
+<<<<<<< HEAD
 using boom;
 using ConsoleApp1; // your ASCII class namespace
+=======
+>>>>>>> 5f223d31d9abff19be39867a5103a1a815e35742
 
-namespace MyApp
+namespace ConsoleApp1
 {
-    internal class FocusTimer
-    {  
-            // 🎨 Public array holding ASCII art banners
-            public static string[] FocusBanner = 
+    
+    public class FocusTimer
+    {
+
+        public Styles styles = new Styles();
+
+        // 🎨 Public array holding ASCII art banners
+        public  string[] FocusBanner = 
 {
             @"                         .-.   .-. .-.   .----.    .-. .-.    .---.                    ",
             @"                         | |   |  `| |   | {}  }   | { } |   {_   _}                   ",
@@ -20,7 +28,7 @@ namespace MyApp
             @" | |  \      /\     }| {_} |.-._} }      | |\ /| || || |\  || {_} |  | |  | {__ .-._} }",
             @" `-'   `----'  `---' `-----'`----'       `-' ` `-'`-'`-' `-'`-----'  `-'  `----'`----' "
 };
-            public static string[] BreakBanner = 
+            public  string[] BreakBanner = 
             {
             @"                         .-.   .-. .-.   .----.    .-. .-.    .---.                     ",
             @"                         | |   |  `| |   | {}  }   | { } |   {_   _}                    ",
@@ -32,7 +40,7 @@ namespace MyApp
             @" `----' `-' `-'`----'`-'  `-'`-' `-'   `-' ` `-'`-'`-' `-'`-----'  `-'  `----'`----'    "
             };
 
-            public static void Start()
+            public void Start()
             {
 
             Console.OutputEncoding = System.Text.Encoding.UTF8;
@@ -48,7 +56,7 @@ namespace MyApp
 
  
 
-            private static int GetMinutes(string[] banner, string label)
+            private  int GetMinutes(string[] banner, string label)
             {
                 while (true)
                 {
@@ -83,8 +91,10 @@ namespace MyApp
                 }
             }
 
-            private static void RunCountdown(string label, int seconds, int mode)
+        
+        public void RunCountdown(string label, int seconds, int mode)
             {
+
                 // --------------------------
                 // TIMER User Interface         
                 // --------------------------
@@ -125,27 +135,27 @@ namespace MyApp
                             int line = 10;
                             if (frame == 1)
                             {
-                                Display(Design.sunflower_1, col, line);
+                                Display(styles.sunflower_1, col, line);
                             }
                             else if (frame == 2)
                             {
-                                Display(Design.sunflower_2, col, line);
+                                Display(styles.sunflower_2, col, line);
                             }
                             else if (frame == 3)
                             {
-                                Display(Design.sunflower_3, col, line);
+                                Display(styles.sunflower_3, col, line);
                             }
                             else if (frame == 4)
                             {
-                                Display(Design.sunflower_4, col, line);
+                                Display(styles.sunflower_4, col, line);
                             }
                             else if (frame == 5)
                             {
-                                Display(Design.sunflower_5, col, line);
+                                Display(styles.sunflower_5, col, line);
                             }
                             else if (frame == 6)
                             {
-                                Display(Design.sunflower_6, col, line);
+                                Display(styles.sunflower_6, col, line);
                             }
                         }
                         else if (random_number == 1)
@@ -155,27 +165,27 @@ namespace MyApp
                             int line = 10;
                             if (frame == 1)
                             {
-                                Display(Design.rose_1, col, line);
+                                Display(styles.rose_1, col, line);
                             }
                             else if (frame == 2)
                             {
-                                Display(Design.rose_2, col, line);
+                                Display(styles.rose_2, col, line);
                             }
                             else if (frame == 3)
                             {
-                                Display(Design.rose_3, col, line);
+                                Display(styles.rose_3, col, line);
                             }
                             else if (frame == 4)
                             {
-                                Display(Design.rose_4, col, line);
+                                Display(styles.rose_4, col, line);
                             }
                             else if (frame == 5)
                             {
-                                Display(Design.rose_5, col, line);
+                                Display(styles.rose_5, col, line);
                             }
                             else if (frame == 6)
                             {
-                                Display(Design.rose_6, col, line);
+                                Display(styles.rose_6, col, line);
                             }
                         }
                         else if (random_number == 2)
@@ -185,35 +195,35 @@ namespace MyApp
                             int line = 10;
                             if (frame == 1)
                             {
-                                Display(Design.bloom_1, col, line);
+                                Display(styles.bloom_1, col, line);
                             }
                             else if (frame == 2)
                             {
-                                Display(Design.bloom_2, col, line);
+                                Display(styles.bloom_2, col, line);
                             }
                             else if (frame == 3)
                             {
-                                Display(Design.bloom_3, col, line);
+                                Display(styles.bloom_3, col, line);
                             }
                             else if (frame == 4)
                             {
-                                Display(Design.bloom_4, col, line);
+                                Display(styles.bloom_4, col, line);
                             }
                             else if (frame == 5)
                             {
-                                Display(Design.bloom_5, col, line);
+                                Display(styles.bloom_5, col, line);
                             }
                             else if (frame == 6)
                             {
-                                Display(Design.bloom_6, col, line);
+                                Display(styles.bloom_6, col, line);
                             }
                             else if (frame == 7)
                             {
-                                Display(Design.bloom_7, col, line);
+                                Display(styles.bloom_7, col, line);
                             }
                             else if (frame == 8)
                             {
-                                Display(Design.bloom_8, col, line);
+                                Display(styles.bloom_8, col, line);
                             }
                         }
                         ;
@@ -234,13 +244,13 @@ namespace MyApp
                         int line = 6;
                         if (frame == 1)
                         {
-                            Display(Design.sleeping_cat_1, col, line);
+                            Display(styles.sleeping_cat_1, col, line);
                             frame = 2;
 
                         }
                         else if (frame == 2)
                         {
-                            Display(Design.sleeping_cat_2, col, line);
+                            Display(styles.sleeping_cat_2, col, line);
                             frame = 1;
                         }
                         // changing frame every second
@@ -284,13 +294,13 @@ namespace MyApp
             Display_Minute("DO");
                 Display_Second("NE");
                 Console.SetCursorPosition(32 - 4, 39);
-                Console.WriteLine(Design.MAGENTA + "Press any key to proceed!" + Design.RESET);
+                Console.WriteLine(styles.MAGENTA + "Press any key to proceed!" + styles.RESET);
                 Console.ReadKey();
             }
             // --------------------------
             // YES / NO ASCII CONFIRMATION
             // --------------------------
-            private static bool AskExitConfirmation()
+            private  bool AskExitConfirmation()
             {
                 int choice = 0; // 0 = YES, 1 = NO
 
@@ -299,7 +309,7 @@ namespace MyApp
                     Console.Clear();
 
                     // Draw your YES/NO ASCII from another class
-                    foreach (string line in Design.YesNoQuestion)
+                    foreach (string line in styles.YesNoQuestion)
                         Console.WriteLine(line);
 
                     // Draw selection indicator
@@ -339,18 +349,18 @@ namespace MyApp
             // ASCII PRINTER
             // --------------------------
             //   - Mothods for displaying ASCII Timer and Art
-            public static void Load_Background()
+            public  void Load_Background()
             {
                 Console.Clear();
                 int line = 10;
 
-                foreach (var print in Design.bg)
+                foreach (var print in styles.bg)
                 {
                     Console.WriteLine(print);
                 }
 
                 line = 39;
-                foreach (var print in Design.flower_design)
+                foreach (var print in styles.flower_design)
                 {
                     Console.SetCursorPosition(5, line);
                     Console.Write(print);
@@ -358,7 +368,7 @@ namespace MyApp
                 }
 
                 line = 7;
-                foreach (var print in Design.header)
+                foreach (var print in styles.header)
                 {
                     Console.SetCursorPosition(25, line);
                     Console.Write(print);
@@ -366,7 +376,7 @@ namespace MyApp
                 }
 
             }
-            public static void Display_Minute(string minute)
+            public  void Display_Minute(string minute)
             {
                 int line = 14;
                 if (minute.Length == 1)
@@ -376,78 +386,78 @@ namespace MyApp
                 switch (minute.ToString().Substring(0, 1))
                 {
                     case "0":
-                        Display(Design.a0, 24, line);
+                        Display(styles.a0, 24, line);
                         break;
                     case "1":
-                        Display(Design.a1, 24, line);
+                        Display(styles.a1, 24, line);
                         break;
                     case "2":
-                        Display(Design.a2, 24, line);
+                        Display(styles.a2, 24, line);
                         break;
                     case "3":
-                        Display(Design.a3, 24, line);
+                        Display(styles.a3, 24, line);
                         break;
                     case "4":
-                        Display(Design.a4, 24, line);
+                        Display(styles.a4, 24, line);
                         break;
                     case "5":
-                        Display(Design.a5, 24, line);
+                        Display(styles.a5, 24, line);
                         break;
                     case "6":
-                        Display(Design.a6, 24, line);
+                        Display(styles.a6, 24, line);
                         break;
                     case "7":
-                        Display(Design.a7, 24, line);
+                        Display(styles.a7, 24, line);
                         break;
                     case "8":
-                        Display(Design.a8, 24, line);
+                        Display(styles.a8, 24, line);
                         break;
                     case "9":
-                        Display(Design.a9, 24, line);
+                        Display(styles.a9, 24, line);
                         break;
                     case "D":
-                        Display(Design.aD, 24, line);
+                        Display(styles.aD, 24, line);
                         break;
                 }
 
                 switch (minute.ToString().Substring(1, 1))
                 {
                     case "0":
-                        Display(Design.a0, 40, line);
+                        Display(styles.a0, 40, line);
                         break;
                     case "1":
-                        Display(Design.a1, 40, line);
+                        Display(styles.a1, 40, line);
                         break;
                     case "2":
-                        Display(Design.a2, 40, line);
+                        Display(styles.a2, 40, line);
                         break;
                     case "3":
-                        Display(Design.a3, 40, line);
+                        Display(styles.a3, 40, line);
                         break;
                     case "4":
-                        Display(Design.a4, 40, line);
+                        Display(styles.a4, 40, line);
                         break;
                     case "5":
-                        Display(Design.a5, 40, line);
+                        Display(styles.a5, 40, line);
                         break;
                     case "6":
-                        Display(Design.a6, 40, line);
+                        Display(styles.a6, 40, line);
                         break;
                     case "7":
-                        Display(Design.a7, 40, line);
+                        Display(styles.a7, 40, line);
                         break;
                     case "8":
-                        Display(Design.a8, 40, line);
+                        Display(styles.a8, 40, line);
                         break;
                     case "9":
-                        Display(Design.a9, 40, line);
+                        Display(styles.a9, 40, line);
                         break;
                     case "O":
-                        Display(Design.aO, 40, line);
+                        Display(styles.aO, 40, line);
                         break;
                 }
             }
-            public static void Display_Second(string second)
+            public  void Display_Second(string second)
             {
                 int line = 27;
                 if (second.Length == 1)
@@ -459,78 +469,78 @@ namespace MyApp
                 switch (second.ToString().Substring(0, 1))
                 {
                     case "0":
-                        Display(Design.a0, 24, line);
+                        Display(styles.a0, 24, line);
                         break;
                     case "1":
-                        Display(Design.a1, 24, line);
+                        Display(styles.a1, 24, line);
                         break;
                     case "2":
-                        Display(Design.a2, 24, line);
+                        Display(styles.a2, 24, line);
                         break;
                     case "3":
-                        Display(Design.a3, 24, line);
+                        Display(styles.a3, 24, line);
                         break;
                     case "4":
-                        Display(Design.a4, 24, line);
+                        Display(styles.a4, 24, line);
                         break;
                     case "5":
-                        Display(Design.a5, 24, line);
+                        Display(styles.a5, 24, line);
                         break;
                     case "6":
-                        Display(Design.a6, 24, line);
+                        Display(styles.a6, 24, line);
                         break;
                     case "7":
-                        Display(Design.a7, 24, line);
+                        Display(styles.a7, 24, line);
                         break;
                     case "8":
-                        Display(Design.a8, 24, line);
+                        Display(styles.a8, 24, line);
                         break;
                     case "9":
-                        Display(Design.a9, 24, line);
+                        Display(styles.a9, 24, line);
                         break;
                     case "N":
-                        Display(Design.aN, 24, line);
+                        Display(styles.aN, 24, line);
                         break;
                 }
 
                 switch (second.ToString().Substring(1, 1))
                 {
                     case "0":
-                        Display(Design.a0, 40, line);
+                        Display(styles.a0, 40, line);
                         break;
                     case "1":
-                        Display(Design.a1, 40, line);
+                        Display(styles.a1, 40, line);
                         break;
                     case "2":
-                        Display(Design.a2, 40, line);
+                        Display(styles.a2, 40, line);
                         break;
                     case "3":
-                        Display(Design.a3, 40, line);
+                        Display(styles.a3, 40, line);
                         break;
                     case "4":
-                        Display(Design.a4, 40, line);
+                        Display(styles.a4, 40, line);
                         break;
                     case "5":
-                        Display(Design.a5, 40, line);
+                        Display(styles.a5, 40, line);
                         break;
                     case "6":
-                        Display(Design.a6, 40, line);
+                        Display(styles.a6, 40, line);
                         break;
                     case "7":
-                        Display(Design.a7, 40, line);
+                        Display(styles.a7, 40, line);
                         break;
                     case "8":
-                        Display(Design.a8, 40, line);
+                        Display(styles.a8, 40, line);
                         break;
                     case "9":
-                        Display(Design.a9, 40, line);
+                        Display(styles.a9, 40, line);
                         break;
                     case "E":
-                        Display(Design.aE, 40, line);
+                        Display(styles.aE, 40, line);
                         break;
                 }
             }
-            public static void Display(string[] number, int col, int line)
+            public  void Display(string[] number, int col, int line)
             {
                 foreach (var print in number)
                 {
