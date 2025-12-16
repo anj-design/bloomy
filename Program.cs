@@ -1,6 +1,5 @@
 ﻿//dito tatawagin mga methods or classes
 //may full screen dapat dito pero tmaaad na ako haha    ================     DONE
-using boom;
 using ConsoleApp1;
 using System;
 using System.Collections.Generic;
@@ -11,42 +10,48 @@ using System.Threading.Tasks;
 using WindowsInput; // input Simulator
 using WindowsInput.Native;
 
-class Program
+namespace ConsoleApp1
 {
-    static void Main(string[] args)
+    class Program
     {
-
-        InputSimulator simulator = new InputSimulator();
-
-        Thread.Sleep(50); // delay para magawa ng isa isa yung key press
-        simulator.Keyboard.KeyPress(VirtualKeyCode.F11); // full screen
-        Thread.Sleep(50);
-        simulator.Keyboard.ModifiedKeyStroke(VirtualKeyCode.CONTROL, VirtualKeyCode.SUBTRACT); //zoom out para makita ng buo yung title
-
-        // Music.PlayMusic("music2.wav");
-        Title.Show();
-
-        Console.ReadKey();
-        Console.Clear();
-
-        foreach (var line in Design.MotivPage)
+        public Design design = new Design();
+        public Title title = new Title();
+        public Styles styles = new Styles();
+        public void Main(string[] args)
         {
-            Console.WriteLine(line);
+
+            InputSimulator simulator = new InputSimulator();
+
+            Thread.Sleep(50); // delay para magawa ng isa isa yung key press
+            simulator.Keyboard.KeyPress(VirtualKeyCode.F11); // full screen
+            Thread.Sleep(50);
+            simulator.Keyboard.ModifiedKeyStroke(VirtualKeyCode.CONTROL, VirtualKeyCode.SUBTRACT); //zoom out para makita ng buo yung title
+
+            // Music.PlayMusic("music2.wav");
+            title.Show();
+
+            Console.ReadKey();
+            Console.Clear();
+
+            foreach (var line in styles.MotivPage)
+            {
+                Console.WriteLine(line);
+            }
+
+            Console.ReadKey();
+            Console.Clear();
+
+            Menu menu = new Menu();
+            while (true)
+            {
+                //  foreach (var line in Design.Bloomi)
+                //{
+                //    Console.WriteLine(line);
+                //}
+                menu.Show();
+
+            }
+
         }
-
-        Console.ReadKey();
-        Console.Clear();
-
-        Menu menu = new Menu();
-        while (true)
-        {
-            //  foreach (var line in Design.Bloomi)
-            //{
-            //    Console.WriteLine(line);
-            //}
-            menu.Show();
-
-        }
-
     }
 }

@@ -1,23 +1,31 @@
-﻿using boom;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ConsoleApp1;
-using MyApp;
 
 namespace ConsoleApp1
 {
-    internal class Menu
+    public class Menu
     {
-        private string[][] options = {
-        Design.MenuStart,
-        Design.MenuHistory,
-        Design.Exit
-    };
+        public Styles styles = new Styles();
+        public Design design = new Design();
+        FocusTimer FocusTimer = new FocusTimer();
 
-        private int selectedIndex = 0;
+        public string[][] options;
+
+        public int selectedIndex = 0;
+
+        public Menu()
+        {
+            options = new string[][]
+            {
+                styles.MenuStart,
+                styles.MenuHistory,
+                styles.Exit
+            };
+        }
 
         public void Show()
         {

@@ -1,5 +1,4 @@
-﻿using boom;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -11,44 +10,43 @@ namespace ConsoleApp1
     class Progress
     {
         public Design design = new Design();
-        public Calendar calendar = new Calendar();
         public void Play()
         {
 
            
             Console.ReadKey();
 
-            foreach (var line in Calendar.january)
+            foreach (var line in design.january)
             {
                 Console.WriteLine(line);
             }
             Console.ReadKey();
 
-            foreach (var line in Calendar.February)
+            foreach (var line in design.February)
             {
                 Console.WriteLine(line);
             }
             Console.ReadKey();
 
-            foreach (var line in Calendar.March)
+            foreach (var line in design.March)
             {
                 Console.WriteLine(line);
             }
             Console.ReadKey();
 
-            foreach (var line in Calendar.Aptil)
+            foreach (var line in design.Aptil)
             {
                 Console.WriteLine(line);
             }
             Console.ReadKey();
 
-            foreach (var line in Calendar.May)
+            foreach (var line in design.May)
             {
                 Console.WriteLine(line);
             }
             Console.ReadKey();
 
-            foreach (var line in Calendar.June)
+            foreach (var line in design.June)
             {
                 Console.WriteLine(line);
             }

@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    public class Calendar
+    public class Design
     {
-        public static string[] December = {
+        public  string[] December = {
 
 @"                                                                                                                                                                          ",
 @"                                                                ___   ____  __    ____  _      ___   ____  ___                                                            ",
@@ -62,10 +62,10 @@ namespace ConsoleApp1
 @"         __| |_____________________________________________________________________________________________________________________________________________________| |__  ",
 @"        (__  ______________________________________________________________________________________________________________________________________________________   __) ",
 @"           | |                                                                                                                                                     | |    ",
-                                                                                                                                                                             
+
        };
 
-        public static string[] january = {
+        public  string[] january = {
 
 @"                                                                    _    __    _      _      __    ___   _                                                                ",
 @"                                                                   | |  / /\  | |\ | | | |  / /\  | |_) \ \_/                                                             ",
@@ -119,7 +119,7 @@ namespace ConsoleApp1
 @"           | |                                                                                                                                                     | |    ",
          };
 
-        public static string[] February = {
+        public  string[] February = {
 
 @"                                                          ____  ____  ___   ___   _      __    ___   _                                                                    ",
 @"                                                         | |_  | |_  | |_) | |_) | | |  / /\  | |_) \ \_/                                                                 ",
@@ -171,7 +171,7 @@ namespace ConsoleApp1
 @"           | |                                                                                                                                                     | |    ",
          };
 
-        public static string[] March = {
+        public  string[] March = {
 
 @"                                                                     _       __    ___   __    _                                                                          ",
 @"                                                                   | |\/|  / /\  | |_) / /`  | |_|                                                                        ",
@@ -225,7 +225,7 @@ namespace ConsoleApp1
 
         };
 
-        public static string[] Aptil = {
+        public  string[] Aptil = {
 @"                                                                         __    ___   ___   _   _                                                                          ",
 @"                                                                        / /\  | |_) | |_) | | | |                                                                         ",
 @"                                                                       /_/--\ |_|   |_| \ |_| |_|__                                                                       ",
@@ -277,7 +277,7 @@ namespace ConsoleApp1
 
               };
 
-        public static string[] May = {
+        public  string[] May = {
 @"                                                                           _       __    _                                                                                ",
 @"                                                                          | |\/|  / /\  \ \_/                                                                             ",
 @"                                                                          |_|  | /_/--\  |_|                                                                              ",
@@ -329,7 +329,7 @@ namespace ConsoleApp1
 @"           | |                                                                                                                                                     | |    ",
            };
 
-        public static string[] June =
+        public  string[] June =
         {
 @"                                                                        _   _     _      ____                                                                             ",
 @"                                                                       | | | | | | |\ | | |_                                                                              ",
@@ -383,6 +383,6 @@ namespace ConsoleApp1
         };
         private int v;
 
-       
+
     }
 }
