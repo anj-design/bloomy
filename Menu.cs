@@ -14,7 +14,6 @@ namespace ConsoleApp1
         private string[][] options = {
         Design.MenuStart,
         Design.MenuHistory,
-        Design.MenuGarden,
         Design.Exit
     };
 
