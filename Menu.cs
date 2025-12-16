@@ -53,19 +53,23 @@ namespace ConsoleApp1
             // ----------------------------
             if (selectedIndex == 0) // MenuStart selected
             {
-                var timer = new FocusTimer(10); // change seconds here
-                timer.Start();
+                FocusTimer.Start();
 
                 Console.WriteLine("\nPress any key to return to menu...");
                 Console.ReadKey();
             }
-            else if (selectedIndex == 3) // Exit
+            else if (selectedIndex == 1) // Exit
+            {
+                var progress = new Progress();
+                progress.Play();
+            }
+            else if (selectedIndex == 2) // Exit
             {
                 Environment.Exit(0);
             }
             else
             {
-                Console.WriteLine("\nPress any key to return to menu...");
+
                 Console.ReadKey();
             }
         }

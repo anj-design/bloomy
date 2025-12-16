@@ -6,18 +6,9 @@ using boom; // your ASCII class namespace
 namespace MyApp
 {
     internal class FocusTimer
-    {
-        private int v;
-
-        public FocusTimer(int v)
-        {
-            this.v = v;
-        }
-
-        public class TimerApp
-        {
+    {  
             // 🎨 Public array holding ASCII art banners
-            public static string[] FocusBanner = new string[]
+            public static string[] FocusBanner = 
 {
             @"                         .-.   .-. .-.   .----.    .-. .-.    .---.                    ",
             @"                         | |   |  `| |   | {}  }   | { } |   {_   _}                   ",
@@ -28,9 +19,7 @@ namespace MyApp
             @" | |  \      /\     }| {_} |.-._} }      | |\ /| || || |\  || {_} |  | |  | {__ .-._} }",
             @" `-'   `----'  `---' `-----'`----'       `-' ` `-'`-'`-' `-'`-----'  `-'  `----'`----' "
 };
-
-<<<<<<< HEAD
-            public static string[] BreakBanner = new string[]
+            public static string[] BreakBanner = 
             {
             @"                         .-.   .-. .-.   .----.    .-. .-.    .---.                     ",
             @"                         | |   |  `| |   | {}  }   | { } |   {_   _}                    ",
@@ -42,39 +31,27 @@ namespace MyApp
             @" `----' `-' `-'`----'`-'  `-'`-' `-'   `-' ` `-'`-'`-' `-'`-----'  `-'  `----'`----'    "
             };
 
-            public void Start()
-=======
+            public static void Start()
+            {
+
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
             Console.Write("\nFocus Minutes: ");
             int focusMin = int.Parse(Console.ReadLine());
 
             Console.Write("Break Minutes: ");
             int breakMin = int.Parse(Console.ReadLine());
 
-            RunCountdown("FOCUS TIME", focusMin * 60);
-            RunCountdown("BREAK TIME", breakMin * 60);
+            RunCountdown("FOCUS TIME", focusMin * 60,1);
+            RunCountdown("BREAK TIME", breakMin * 60,2);
         }
 
-        private void RunCountdown(string label, int seconds)
-        {
-            for (int i = seconds; i >= 0; i--)
->>>>>>> 0a95196a9475b28693bdb40b1e93ad594eda6996
-            {
-                Console.Clear();
-                Console.OutputEncoding = System.Text.Encoding.UTF8;
+ 
 
-                int focusMin = GetMinutes(FocusBanner, "Focus Minutes");
-                int breakMin = GetMinutes(BreakBanner, "Break Minutes");
-
-                RunCountdown("FOCUS TIME", focusMin * 60, 1);
-                RunCountdown("BREAK TIME", breakMin * 60, 2);
-            }
-
-            private int GetMinutes(string[] banner, string label)
+            private static int GetMinutes(string[] banner, string label)
             {
                 while (true)
                 {
                     Console.Clear();
-
                     // Print ASCII banner centered horizontally
                     foreach (var line in banner)
                     {
@@ -105,7 +82,7 @@ namespace MyApp
                 }
             }
 
-            private void RunCountdown(string label, int seconds, int mode)
+            private static void RunCountdown(string label, int seconds, int mode)
             {
                 // --------------------------
                 // TIMER User Interface         
@@ -297,12 +274,13 @@ namespace MyApp
                         }
                     }
 
-                    Thread.Sleep(50);
-                }
+                    Thread.Sleep(1000);
+
+            }
 
 
-                // Display "DONE" on timer
-                Display_Minute("DO");
+            // Display "DONE" on timer
+            Display_Minute("DO");
                 Display_Second("NE");
                 Console.SetCursorPosition(32 - 4, 39);
                 Console.WriteLine(Design.MAGENTA + "Press any key to proceed!" + Design.RESET);
@@ -311,7 +289,7 @@ namespace MyApp
             // --------------------------
             // YES / NO ASCII CONFIRMATION
             // --------------------------
-            private bool AskExitConfirmation()
+            private static bool AskExitConfirmation()
             {
                 int choice = 0; // 0 = YES, 1 = NO
 
@@ -356,25 +334,6 @@ namespace MyApp
                     }
                 }
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             // --------------------------
             // ASCII PRINTER
             // --------------------------
@@ -579,9 +538,7 @@ namespace MyApp
                     line++;
                 }
             }
-        }
-<<<<<<< HEAD
-=======
+        
 
         // --------------------------
         // ASCII PRINTER
@@ -593,6 +550,5 @@ namespace MyApp
         }
 
         // ror
->>>>>>> 0a95196a9475b28693bdb40b1e93ad594eda6996
     }
 }
