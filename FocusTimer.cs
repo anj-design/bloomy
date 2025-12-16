@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Reflection.PortableExecutable;
 using System.Threading;
-using boom; // your ASCII class namespace
+using boom;
+using ConsoleApp1; // your ASCII class namespace
 
 namespace MyApp
 {

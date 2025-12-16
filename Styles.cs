@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace boom
+namespace ConsoleApp1
 {
     internal class Design
     {
