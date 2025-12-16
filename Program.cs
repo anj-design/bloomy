@@ -14,11 +14,11 @@ namespace ConsoleApp1
 {
     class Program
     {
-        public Design design = new Design();
-        public Title title = new Title();
-        public Styles styles = new Styles();
-        public void Main(string[] args)
+        public static void Main(string[] args)
         {
+            Design design = new Design();
+            Title title = new Title();
+            Styles styles = new Styles();
 
             InputSimulator simulator = new InputSimulator();
 

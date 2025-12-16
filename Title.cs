@@ -14,9 +14,10 @@ namespace ConsoleApp1
         public Styles styles = new Styles();
         public  void Show() // method hahaha
         {
-            string titleScreenMusic = AppDomain.CurrentDomain.BaseDirectory + @"Musics\intro.wav";
+            /*string titleScreenMusic = AppDomain.CurrentDomain.BaseDirectory + @"Musics\intro.wav";
             SoundPlayer soundPlayer = new SoundPlayer(titleScreenMusic);
             soundPlayer.PlayLooping();
+            Console.ReadKey(true);*/
 
             int x = 0, y = 18;
             Console.CursorVisible = false; // para walang nag bblink na curser
