@@ -23,7 +23,8 @@ namespace ConsoleApp1
             {
                 styles.MenuStart,
                 styles.MenuHistory,
-                styles.Exit
+                styles.Exit,
+                styles.About,
             };
         }
 
@@ -66,12 +67,17 @@ namespace ConsoleApp1
                 Console.WriteLine("\nPress any key to return to menu...");
                 Console.ReadKey();
             }
-            else if (selectedIndex == 1) // Exit
+            else if (selectedIndex == 1) // focus timer yarn?
             {
                 var progress = new Progress();
                 progress.Play();
             }
-            else if (selectedIndex == 2) // Exit
+            else if (selectedIndex == 2) // about to
+            {
+                var about = new About();
+                about.ShowAbout();
+            }
+            else if (selectedIndex == 3) // Exit
             {
                 Environment.Exit(0);
             }

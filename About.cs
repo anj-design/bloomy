@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    public class About
+    class About
     { 
         public string [] AboutaPage = {
-
 
 @".-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-.",
 @"|                                                                                                                                                                                         |",
@@ -37,19 +36,26 @@ namespace ConsoleApp1
 @":                                                                                                                                                                                         :",
 @"!                   • Successfully grown plants populate a dedicated calander garden–serving as a history of your progress,creating a meaningful, visual                                  !",
 @"|                      representation of your dedication.                                                                                                                                 |",
-@"|                                                                                                                                                                                         |",                                                                                                                                                         !",
+@"|                                                                                                                                                                                         |",
 @"|                                                                                                                                                                                         |",
 @"|                                                                                  Contributors:                                                                                          |",
-@"|                                                                              Bautista, John Nesty                                                                                       |",
-@"|                                                                                Bogñalbal, Geogie                                                                                        |",
+@"|                                                                                                                                                                    |",
 @"|                                                                               Del Mundo, Cyrille                                                                                        |",
 @"|                                                                                Ferrer, Anjilyn                                                                                          |",
 @"|                                                                                  Yambao, Marc                                                                                           |",
 @"|                                                                                                                                                                                         |",
+@"|                                                                                Bautista, John Nesty                                                                                       |",
+@"|                                                                                Bogñalbal, Geogie                                                                                        |",
 @"|                                                                                                                                                                                         |",
 @"|                                                                                                                                                                                         |",
-@"`-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-='",                                                                                      '
-
+@"`-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-='",                                                                                      
         };
+        public void ShowAbout()
+        {
+            foreach (var item in AboutaPage)
+            {
+                Console.WriteLine(item);
+            }
+        }
     }
 }
