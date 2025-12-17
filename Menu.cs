@@ -31,11 +31,13 @@ namespace ConsoleApp1
         {
             Console.Clear();
 
+            
             ConsoleKey key;
 
             do
             {
                 Console.Clear();
+
                 DisplayMenu();
 
                 key = Console.ReadKey(true).Key;

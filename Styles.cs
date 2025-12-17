@@ -8,6 +8,7 @@ namespace ConsoleApp1
 {
     public class Styles
     {
+
         public void CenterText(string text)
         {
             int windowWidth = Console.WindowWidth;
