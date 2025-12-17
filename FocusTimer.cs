@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Globalization;
+using System.Media;
 using System.Reflection.PortableExecutable;
+using System.Runtime.CompilerServices;
 using System.Threading;
+using WindowsInput;
 
 namespace ConsoleApp1
 {
@@ -10,83 +13,139 @@ namespace ConsoleApp1
     {
 
         public Styles styles = new Styles();
+        public SoundPlayer player = new SoundPlayer();
 
         // 🎨 Public array holding ASCII art banners
-        public  string[] FocusBanner = 
-{
-            @"                         .-.   .-. .-.   .----.    .-. .-.    .---.                    ",
-            @"                         | |   |  `| |   | {}  }   | { } |   {_   _}                   ",
-            @"                         | |   | |\  |   | .--'    | {_} |     | |                     ",
-            @"                         `-'   `-' `-'   `-'       `-----'     `-'                     ",
-            @" .----..----.  .---. .-. .-. .----.      .-.   .-..-..-. .-..-. .-. .---. .----. .----.",
-            @" | {_ /  {}  \/  ___}| { } |{ {__        |  `.'  || ||  `| || { } |{_   _}| {_  { {__  ",
-            @" | |  \      /\     }| {_} |.-._} }      | |\ /| || || |\  || {_} |  | |  | {__ .-._} }",
-            @" `-'   `----'  `---' `-----'`----'       `-' ` `-'`-'`-' `-'`-----'  `-'  `----'`----' "
+        public void FocusBanner()
+        {
+            string[] FocusBanner = {
+
+            @" .----..----.  .---. .-. .-. .----.      .-.   .-..-..-. .-..-. .-. .---. .----. .----.  ",
+            @" | {_ /  {}  \/  ___}| { } |{ {__        |  `.'  || ||  `| || { } |{_   _}| {_  { {__   O",
+            @" | |  \      /\     }| {_} |.-._} }      | |\ /| || || |\  || {_} |  | |  | {__ .-._} } O",
+            @" `-'   `----'  `---' `-----'`----'       `-' ` `-'`-'`-' `-'`-----'  `-'  `----'`----'   "
 };
-            public  string[] BreakBanner = 
+            foreach (var line in FocusBanner)
             {
-            @"                         .-.   .-. .-.   .----.    .-. .-.    .---.                     ",
-            @"                         | |   |  `| |   | {}  }   | { } |   {_   _}                    ",
-            @"                         | |   | |\  |   | .--'    | {_} |     | |                      ",
-            @"                         `-'   `-' `-'   `-'       `-----'     `-'                      ",
+                Console.WriteLine(line);
+            }
+        }
+        public void BreakBanner()
+        {
+            string[] BreakBanner =
+            {
             @" .----. .----. .----.  .--.  .-. .-.   .-.   .-..-..-. .-..-. .-. .---. .----. .----.   ",
-            @" | {}  }| {}  }| {_   / {} \ | |/ /    |  `.'  || ||  `| || { } |{_   _}| {_  { {__     ",
-            @" | {}  }| .-. \| {__ /  /\  \| |\ \    | |\ /| || || |\  || {_} |  | |  | {__ .-._} }   ",
+            @" | {}  }| {}  }| {_   / {} \ | |/ /    |  `.'  || ||  `| || { } |{_   _}| {_  { {__    O",
+            @" | {}  }| .-. \| {__ /  /\  \| |\ \    | |\ /| || || |\  || {_} |  | |  | {__ .-._} }  O",
             @" `----' `-' `-'`----'`-'  `-'`-' `-'   `-' ` `-'`-'`-' `-'`-----'  `-'  `----'`----'    "
             };
+            foreach (var line in BreakBanner)
+            {
+                Console.WriteLine(line);
+            }
+        }
 
             public void Start()
             {
 
-            Console.OutputEncoding = System.Text.Encoding.UTF8;
-            Console.Write("\nFocus Minutes: ");
-            int focusMin = int.Parse(Console.ReadLine());
+            InputSimulator inputSimulator = new InputSimulator();
 
-            Console.Write("Break Minutes: ");
-            int breakMin = int.Parse(Console.ReadLine());
+            for (int i = 0; i <= 10; i++)
+            {
+                inputSimulator.Keyboard.ModifiedKeyStroke(WindowsInput.Native.VirtualKeyCode.CONTROL, WindowsInput.Native.VirtualKeyCode.OEM_PLUS);
+            }
+            Thread.Sleep(300);
+
+            int col = 27;
+            int line = 7;
+
+            Console.Clear();
+
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+            FocusBanner();
+            int focusMin = ReadNumberWithArt(col, line, FocusBanner);
+
+            Console.Clear();
+            BreakBanner();
+            int breakMin = ReadNumberWithArt(col, line, BreakBanner);
+
+            string musicTimer = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Music", "cutie.wav");
+            player.SoundLocation = musicTimer;
+            player.Load();
+            player.PlayLooping();
+
+            for (int i = 0; i <= 10; i++)
+            {
+                inputSimulator.Keyboard.ModifiedKeyStroke(WindowsInput.Native.VirtualKeyCode.CONTROL, WindowsInput.Native.VirtualKeyCode.OEM_MINUS);
+            }
+
+            Thread.Sleep(300);
 
             RunCountdown("FOCUS TIME", focusMin * 60,1);
             RunCountdown("BREAK TIME", breakMin * 60,2);
         }
 
- 
+        //Method para sa pag read ng number with ASCII art
+        public int ReadNumberWithArt(int col, int line, Action banner)
+        {
 
-            private  int GetMinutes(string[] banner, string label)
+            string buffer = "";
+
+            while (true)
             {
-                while (true)
+                ConsoleKeyInfo key = Console.ReadKey(true);
+
+                if (key.Key == ConsoleKey.Enter)
+                    break;
+
+                if (key.Key == ConsoleKey.Backspace && buffer.Length > 0)
                 {
-                    Console.Clear();
-                    // Print ASCII banner centered horizontally
-                    foreach (var line in banner)
-                    {
-                        int horizontalCenter = (Console.WindowWidth - line.Length) / 2;
-                        Console.SetCursorPosition(Math.Max(0, horizontalCenter), Console.CursorTop);
-                        Console.WriteLine(line);
-                    }
-
-                    Console.WriteLine();
-                    Console.Write($"{label} (or type 'B' to go back): ");
-                    string? input = Console.ReadLine();
-
-                    if (!string.IsNullOrEmpty(input) && input.Trim().Equals("B", StringComparison.OrdinalIgnoreCase))
-                    {
-                        return 0; // back button logic
-                    }
-
-                    if (int.TryParse(input, out int minutes) && minutes > 0)
-                    {
-                        return minutes;
-                    }
-                    else
-                    {
-                        Console.Clear();
-                        Console.WriteLine("Invalid input. Please enter a number.");
-                        System.Threading.Thread.Sleep(1500);
-                    }
+                    buffer = buffer[..^1];
                 }
+
+                else if (char.IsDigit(key.KeyChar))
+                {
+                    buffer += key.KeyChar;
+                }
+
+                Console.Clear();
+                banner();
+
+                Console.SetCursorPosition(col, line);
+
+                DisplayNumberArt(buffer, col, line + 2);
             }
 
-        
+            return buffer == "" ? 0 : int.Parse(buffer);
+        }
+
+        // Method to display number in ASCII art
+        public void DisplayNumberArt(string number, int col, int line)
+        {
+            foreach (char digit in number)
+            {
+                string[] art;
+                switch (digit)
+                {
+                    case '0': art = styles.a0; break;
+                    case '1': art = styles.a1; break;
+                    case '2': art = styles.a2; break;
+                    case '3': art = styles.a3; break;
+                    case '4': art = styles.a4; break;
+                    case '5': art = styles.a5; break;
+                    case '6': art = styles.a6; break;
+                    case '7': art = styles.a7; break;
+                    case '8': art = styles.a8; break;
+                    case '9': art = styles.a9; break;
+                    default: art = Array.Empty<string>(); break;
+                }
+
+                Display(art, col, line);
+                col += 14;
+            }
+        }
+     
         public void RunCountdown(string label, int seconds, int mode)
             {
 
@@ -265,6 +324,7 @@ namespace ConsoleApp1
                             {
                                 Console.Clear();
                                 Console.WriteLine("Timer stopped.");
+                                player.Stop();
                                 Thread.Sleep(1000);
                                 Start();
                                 return;

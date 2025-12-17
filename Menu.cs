@@ -147,5 +147,7 @@ namespace ConsoleApp1
             foreach (var line in art)
                 Console.WriteLine(CenterText(line));
         }
+
+        
     }
 }
