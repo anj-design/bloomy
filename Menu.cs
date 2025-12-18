@@ -10,7 +10,6 @@ namespace ConsoleApp1
     public class Menu
     {
         public Styles styles = new Styles();
-        public Design design = new Design();
         FocusTimer FocusTimer = new FocusTimer();
 
         public string[][] options;
@@ -76,9 +75,7 @@ namespace ConsoleApp1
             else if (selectedIndex == 2) // about to
             {
                 var about = new About();
-                about.showDescription();
-                about.showHow();
-                about.showWho();
+                about.DisplayAbout();
             }
             else if (selectedIndex == 3) // Exit
             {

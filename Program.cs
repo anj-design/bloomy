@@ -16,7 +16,7 @@ namespace ConsoleApp1
     {
         public static void Main(string[] args)
         {
-            Design design = new Design();
+
             Title title = new Title();
             Styles styles = new Styles();
 
