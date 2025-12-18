@@ -104,7 +104,7 @@ namespace ConsoleApp1
         public void showWho()
         {
 
-            Console.SetCursorPosition(x, y + 28);
+            Console.SetCursorPosition(x, y + 30);
             foreach (var f in namesx)
             {
                 Console.WriteLine(f);

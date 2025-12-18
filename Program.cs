@@ -33,6 +33,7 @@ namespace ConsoleApp1
             Console.ReadKey();
             Console.Clear();
 
+            simulator.Keyboard.ModifiedKeyStroke(VirtualKeyCode.CONTROL, VirtualKeyCode.SUBTRACT);
             foreach (var line in styles.MotivPage)
             {
                 Console.WriteLine(line);
