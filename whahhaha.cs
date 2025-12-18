@@ -4,16 +4,17 @@ using System.Globalization;
 
 namespace ConsoleApp1
 {
-    class whahahaha // okay before we start balak ko lng sabihin na ayaw ko na
+    class Calendar2
+        // okay before we start balak ko lng sabihin na ayaw ko na
     {
 
         public Design design = new Design();
-        public Styles styles = new Styles();
+        public Progress Progress = new Progress();
         private int currentMonth = 0;
         private List<string> monthNames;
         private List<int[]> monthData; // First day of month, total days 
 
-        public void Progress()
+        private void InitializeCalendar()
         {
             monthNames = new List<string>
             {
@@ -43,7 +44,10 @@ namespace ConsoleApp1
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
             Console.CursorVisible = false;
-            styles.ShowWelcomeScreen();
+
+            InitializeCalendar();
+
+            Progress.ShowWelcomeScreen();
 
             bool running = true;
             while (running)
@@ -71,15 +75,20 @@ namespace ConsoleApp1
                 }
             }
 
-            styles.ShowExitScreen(); 
+            Progress.ShowExitScreen(); 
             Console.CursorVisible = true; //awit sana wala pasok bukas
         }
 
         private void DisplayCurrentMonth()
         {
             Console.Clear();
-            styles.DrawCalendar(monthNames[currentMonth], monthData[currentMonth][0], monthData[currentMonth][1], currentMonth + 1);
-            styles.ShowNavigation(currentMonth, 11);
+            Progress.DrawCalendar(
+                monthNames[currentMonth],
+                monthData[currentMonth][0],
+                monthData[currentMonth][1],
+                currentMonth + 1
+            );
+            Progress.ShowNavigation(currentMonth, 11);
         }
     }
 } // hehehehe ano lalagay ko whahaha

@@ -23,8 +23,8 @@ namespace ConsoleApp1
             {
                 styles.MenuStart,
                 styles.MenuHistory,
-                styles.Exit,
-                styles.About,
+                styles.MenuAbout,
+                styles.Exit
             };
         }
 
@@ -64,13 +64,12 @@ namespace ConsoleApp1
             {
                 FocusTimer.Start();
 
-                Console.WriteLine("\nPress any key to return to menu...");
                 Console.ReadKey();
             }
             else if (selectedIndex == 1) // focus timer yarn?
             {
-                var progress = new Progress();
-                progress.Play();
+                var calendar = new Progress();
+                calendar.ShowWelcomeScreen();
             }
             else if (selectedIndex == 2) // about to
             {
