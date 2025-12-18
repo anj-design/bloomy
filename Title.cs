@@ -15,10 +15,10 @@ namespace ConsoleApp1
         public Styles styles = new Styles();
         public void Show() // method hahaha
         {
-            string musicFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"Music", "intro.wav");
-            SoundPlayer player = new SoundPlayer(musicFilePath);
-            player.Load();
-            player.PlayLooping();
+            //string musicFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"Musics", "intro.wav");
+            //SoundPlayer player = new SoundPlayer(musicFilePath);
+            //player.Load();
+            //player.PlayLooping();
 
 
             int x = 0, y = 18;

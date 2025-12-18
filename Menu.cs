@@ -68,13 +68,15 @@ namespace ConsoleApp1
             }
             else if (selectedIndex == 1) // focus timer yarn?
             {
-                var calendar = new Progress();
-                calendar.ShowWelcomeScreen();
+                History history = new History();
+                history.NavigateSessions();
             }
             else if (selectedIndex == 2) // about to
             {
                 var about = new About();
-                about.ShowAbout();
+                about.showDescription();
+                about.showHow();
+                about.showWho();
             }
             else if (selectedIndex == 3) // Exit
             {

@@ -48,6 +48,7 @@ namespace ConsoleApp1
             public void Start()
             {
 
+            var history = new History();
             InputSimulator inputSimulator = new InputSimulator();
 
             for (int i = 0; i <= 10; i++)
@@ -70,10 +71,10 @@ namespace ConsoleApp1
             BreakBanner();
             int breakMin = ReadNumberWithArt(col, line, BreakBanner);
 
-            string musicTimer = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Music", "cutie.wav");
-            player.SoundLocation = musicTimer;
-            player.Load();
-            player.PlayLooping();
+            //string musicTimer = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Musics", "cutie.wav");
+            //player.SoundLocation = musicTimer;
+            //player.Load();
+            //player.PlayLooping();
 
             for (int i = 0; i <= 10; i++)
             {
@@ -83,7 +84,18 @@ namespace ConsoleApp1
             Thread.Sleep(300);
 
             RunCountdown("FOCUS TIME", focusMin * 60,1);
+
+            var session = new FocusSession //para masave yung progress
+            {
+                Date = DateTime.Now,
+                Minutes = focusMin
+            };
+            history.AddSession(session);
+
             RunCountdown("BREAK TIME", breakMin * 60,2);
+
+            Console.Clear();
+            history.NavigateSessions();
         }
 
         //Method para sa pag read ng number with ASCII art
@@ -324,7 +336,7 @@ namespace ConsoleApp1
                             {
                                 Console.Clear();
                                 Console.WriteLine("Timer stopped.");
-                                player.Stop();
+                                //player.Stop();
                                 Thread.Sleep(1000);
                                 Start();
                                 return;
