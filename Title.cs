@@ -30,8 +30,9 @@ namespace ConsoleApp1
                 Console.SetCursorPosition(x, y);
                 Console.WriteLine(line);
                 y++;
-
+            Console.ReadKey();
             }
+
         }
     }
 }
