@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using ConsoleApp1;
@@ -9,6 +10,7 @@ namespace ConsoleApp1
 {
     public class Menu
     {
+
         public Styles styles = new Styles();
         FocusTimer FocusTimer = new FocusTimer();
 
@@ -30,7 +32,9 @@ namespace ConsoleApp1
         public void Show()
         {
             Console.Clear();
-
+        SoundPlayer bg = new SoundPlayer("bgmusic1.wav");
+        bg.Load();
+            bg.PlayLooping();
             
             ConsoleKey key;
 
@@ -85,6 +89,7 @@ namespace ConsoleApp1
             {
 
                 Console.ReadKey();
+                bg.Stop();  
             }
         }
 

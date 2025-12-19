@@ -4,6 +4,7 @@ using ConsoleApp1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -53,6 +54,12 @@ namespace ConsoleApp1
 
             }
 
+        }
+        public static void CuteMusic(string filepath)
+        {
+            SoundPlayer player = new SoundPlayer();
+            player.SoundLocation = filepath;
+            player.Play();
         }
     }
 }

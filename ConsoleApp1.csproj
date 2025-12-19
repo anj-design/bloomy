@@ -8,11 +8,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="focustimermusic.wav" />
+    <None Remove="Musics\bgmusic1.wav" />
+    <None Remove="Musics\cutie.wav" />
     <None Remove="Musics\intro.wav" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Musics\intro.wav" />
+    <Content Include="focustimermusic.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="intro.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bgmusic1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Musics\cutie.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

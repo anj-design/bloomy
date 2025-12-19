@@ -10,16 +10,16 @@ using System.IO;
 
 namespace ConsoleApp1
 {
+
     public class Title //class
     {
         public Styles styles = new Styles();
         public void Show() // method hahaha
         {
-            //string musicFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"Musics", "intro.wav");
-            //SoundPlayer player = new SoundPlayer(musicFilePath);
-            //player.Load();
-            //player.PlayLooping();
 
+        SoundPlayer player = new SoundPlayer("intro.wav");
+            player.Load();
+        player.PlayLooping();
 
             int x = 0, y = 18;
             Console.CursorVisible = false; // para walang nag bblink na curser
@@ -27,10 +27,16 @@ namespace ConsoleApp1
             foreach (string line in styles.Bloomi)
             {
                 Thread.Sleep(50); // for animation lang
+                Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.SetCursorPosition(x, y);
                 Console.WriteLine(line);
                 y++;
+
+                Console.SetCursorPosition((int)x, (int)y);
+                Console.WriteLine("Press any key to stop the music.");
             }
+            Console.ReadKey();
+            player.Stop();
 
         }
     }

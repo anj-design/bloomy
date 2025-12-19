@@ -13,7 +13,7 @@ namespace ConsoleApp1
     {
 
         public Styles styles = new Styles();
-        public SoundPlayer player = new SoundPlayer();
+            
 
         // 🎨 Public array holding ASCII art banners
         public void FocusBanner()
@@ -47,6 +47,10 @@ namespace ConsoleApp1
 
             public void Start()
             {
+
+            SoundPlayer ftbg = new SoundPlayer("focustimermusic.wav");
+            ftbg.Load();
+            ftbg.PlayLooping();
 
             var history = new History();
             InputSimulator inputSimulator = new InputSimulator();
