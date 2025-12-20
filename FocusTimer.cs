@@ -80,7 +80,7 @@ namespace ConsoleApp1
             //player.Load();
             //player.PlayLooping();
 
-            for (int i = 0; i <= 10; i++)
+            for (int i = 0; i <= 9; i++)
             {
                 inputSimulator.Keyboard.ModifiedKeyStroke(WindowsInput.Native.VirtualKeyCode.CONTROL, WindowsInput.Native.VirtualKeyCode.OEM_MINUS);
             }
