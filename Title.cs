@@ -21,7 +21,7 @@ namespace ConsoleApp1
             player.Load();
         player.PlayLooping();
 
-            int x = 0, y = 18;
+            int x = 0, y = 10;
             Console.CursorVisible = false; // para walang nag bblink na curser
 
             foreach (string line in styles.Bloomi)
@@ -33,10 +33,8 @@ namespace ConsoleApp1
                 y++;
 
                 Console.SetCursorPosition((int)x, (int)y);
-                Console.WriteLine("Press any key to stop the music.");
             }
             Console.ReadKey();
-            player.Stop();
 
         }
     }

@@ -13,15 +13,15 @@ namespace ConsoleApp1
         // Ito ang "Full Screen" art kapag pinili (Enter) ang isang session
         private string[] fullFlowerArt = new string[]
         {
-@"                     _                                           ",
-@"                   _(_)_                          wWWWw   _      ",
-@"       @@@@       (_)@(_)   vVVVv     _     @@@@  (___) _(_)_    ",
-@"      @@()@@ wWWWw  (_)\    (___)   _(_)_  @@()@@   Y  (_)@(_)   ",
-@"       @@@@  (___)     `|/    Y    (_)@(_)  @@@@   \|/   (_)\    ",
-@"        /      Y       \|    \|/    /(_)    \|      |/      |    ",
-@"     \ |     \ |/       | / \ | /  \|/       |/    \|      \|/   ",
-@"     \\|//   \\|///  \\\|//\\\|/// \|///  \\\|//  \\|//  \\\|//  ",
-@" ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ",
+ @"                     _                                                                                                     ",
+ @"                   _(_)_                          wWWWw   _                    _(_)_                          wWWWw   _    ",
+ @"       @@@@       (_)@(_)   vVVVv     _     @@@@  (___) _(_)_      @@@@       (_)@(_)   vVVVv     _     @@@@  (___) _(_)_  ",
+ @"      @@()@@ wWWWw  (_)\    (___)   _(_)_  @@()@@   Y  (_)@(_)    @@()@@ wWWWw  (_)\    (___)   _(_)_  @@()@@   Y  (_)@(_) ",
+ @"       @@@@  (___)     `|/    Y    (_)@(_)  @@@@   \|/   (_)\      @@@@  (___)     `|/    Y    (_)@(_)  @@@@   \|/   (_)\  ",
+ @"        /      Y       \|    \|/    /(_)    \|      |/      |       /      Y       \|    \|/    /(_)    \|      |/      |  ",
+ @"     \ |     \ |/       | / \ | /  \|/       |/    \|      \|/   \ |     \ |/       | / \ | /  \|/       |/    \|      \|/ ",
+ @"     \\|//   \\|///  \\\|//\\\|/// \|///  \\\|//  \\|//  \\\|//  \\|//   \\|///  \\\|//\\\|/// \|///  \\\|//  \\|//  \\\|//",
+ @" ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
         };
 
         private string[] kinemeLang = new string[]
@@ -34,10 +34,20 @@ namespace ConsoleApp1
 
         // Ito naman ang "Mini Icon" para sa Grid View
         private string[] iconArt = new string[]
-        {
-            @"  .-.  ",
-            @" ( o ) ",
-            @"  `-'  "
+        {          
+@"     _/ \ / \ / \_     ",
+@"   _\ \ .'- -'. / /_   ",  
+@"  \_ \,___   ___,/ _/  ", 
+@" < _ ( \__)-(__/ ) _ > ", 
+@"  /_  -  .___.  -  _\  ", 
+@"   /_ / -.. ..- \ _\   ",
+@"      \ / \ / \ /      ",
+@"          |'|_.---._,  ",
+@"  ,_.---._| |- --- /   ",
+@"   \ --- -| | '---'    ",
+@"    '---'_|_|___       ",
+@"      [_________]      ",
+@"       \______/        ", 
         };
 
         public History()
@@ -79,7 +89,7 @@ namespace ConsoleApp1
             }
 
             int selectedIndex = 0;
-            int columns = 4; // Ilang icons ang kasya sa isang row
+            int columns = 6; // Ilang icons ang kasya sa isang row
             bool running = true;
 
             while (running)
@@ -92,11 +102,13 @@ namespace ConsoleApp1
                 }
                 Console.ResetColor();
 
+
+
                 // Grid Settings
-                int startX = 15;  // Margin sa kaliwa
+                int startX = 10;  // Margin sa kaliwa
                 int startY = 10;  // Margin sa taas
-                int spacingX = 20; // Layo ng icons sa isa't isa (Horizontal)
-                int spacingY = 10;  // Layo ng icons sa isa't isa (Vertical)
+                int spacingX = 26; // Layo ng icons sa isa't isa (Horizontal)
+                int spacingY = 14;  // Layo ng icons sa isa't isa (Vertical)
 
                 for (int i = 0; i < Sessions.Count; i++)
                 {
@@ -161,23 +173,53 @@ namespace ConsoleApp1
             Console.ResetColor();
         }
 
-        private void ShowSessionDetails(FocusSession session)
+        private string CenterText(string text)
+        {
+            int winWidth = Console.WindowWidth;
+            int padding = Math.Max(0, (winWidth - text.Length) / 2);
+            return new string(' ', padding) + text;
+        }
+
+        public void ShowSessionDetails(FocusSession session)
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Magenta;
 
-            // Draw big art
+            int winWidth = Console.WindowWidth;
+
+            // Center each line of the flower art
             foreach (var line in fullFlowerArt)
             {
-                Console.WriteLine(line);
+                int padding = Math.Max(0, (winWidth - line.Length) / 2);
+                Console.WriteLine(new string(' ', padding) + line);
             }
 
             Console.ResetColor();
-            Console.WriteLine("\n--------------------------------");
-            Console.WriteLine($" 📅 Date:     {session.Date:F}");
-            Console.WriteLine($" ⏱️ Duration: {session.Minutes} minutes");
-            Console.WriteLine("--------------------------------");
-            Console.WriteLine("\n[Backspace] Back to Garden");
+
+            // Add spacing below the art
+            Console.WriteLine();
+
+            // Prepare details text
+            string separator = "--------------------------------";
+            string dateLine = $" 📅 Date:     {session.Date:F}";
+            string durationLine = $" ⏱️ Duration: {session.Minutes} minutes";
+            string backLine = "[Backspace] Back to Garden";
+
+            // Helper to center any line
+            void WriteCentered(string text)
+            {
+                int padding = Math.Max(0, (winWidth - text.Length) / 2);
+                Console.WriteLine(new string(' ', padding) + text);
+            }
+
+            // Centered output
+            WriteCentered(separator);
+            WriteCentered(dateLine);
+            WriteCentered(durationLine);
+            WriteCentered(separator);
+            Console.WriteLine();
+            WriteCentered(backLine);
+
             Console.ReadKey();
         }
     }

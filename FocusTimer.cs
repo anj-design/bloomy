@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Media;
 using System.Reflection.PortableExecutable;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using WindowsInput;
 
@@ -11,11 +12,21 @@ namespace ConsoleApp1
     
     public class FocusTimer
     {
-
         public Styles styles = new Styles();
-            
+        public int x = 0, y = 25;
 
-        // 🎨 Public array holding ASCII art banners
+        public void showXr()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            foreach (var xr in styles.x_to_back)
+            {
+             Console.SetCursorPosition(x, y + 5);
+               Console.WriteLine(xr);
+            }
+        }
+
+
         public void FocusBanner()
         {
             string[] FocusBanner = {
@@ -43,14 +54,13 @@ namespace ConsoleApp1
             {
                 Console.WriteLine(line);
             }
+            showXr();  
         }
 
-            public void Start()
-            {
+        public void Start()
+        {
 
-            SoundPlayer ftbg = new SoundPlayer("focustimermusic.wav");
-            ftbg.Load();
-            ftbg.PlayLooping();
+            
 
             var history = new History();
             InputSimulator inputSimulator = new InputSimulator();
@@ -69,16 +79,11 @@ namespace ConsoleApp1
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
             FocusBanner();
-            int focusMin = ReadNumberWithArt(col, line, FocusBanner);
+            int focusMin = (int)ReadNumberWithArt(col, line, FocusBanner);
 
             Console.Clear();
             BreakBanner();
-            int breakMin = ReadNumberWithArt(col, line, BreakBanner);
-
-            //string musicTimer = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Musics", "cutie.wav");
-            //player.SoundLocation = musicTimer;
-            //player.Load();
-            //player.PlayLooping();
+            int breakMin = (int)ReadNumberWithArt(col, line, BreakBanner);
 
             for (int i = 0; i <= 10; i++)
             {
@@ -87,7 +92,7 @@ namespace ConsoleApp1
 
             Thread.Sleep(300);
 
-            RunCountdown("FOCUS TIME", focusMin * 60,1);
+            RunCountdown("FOCUS TIME", focusMin * 60, 1);
 
             var session = new FocusSession //para masave yung progress
             {
@@ -96,16 +101,17 @@ namespace ConsoleApp1
             };
             history.AddSession(session);
 
-            RunCountdown("BREAK TIME", breakMin * 60,2);
+            RunCountdown("BREAK TIME", breakMin * 60, 2);
 
             Console.Clear();
             history.NavigateSessions();
         }
 
-        //Method para sa pag read ng number with ASCII art
-        public int ReadNumberWithArt(int col, int line, Action banner)
-        {
 
+        //Method para sa pag read ng number with ASCII art
+        public object ReadNumberWithArt(int col, int line, Action banner)
+        {
+            
             string buffer = "";
 
             while (true)
@@ -131,6 +137,14 @@ namespace ConsoleApp1
                 Console.SetCursorPosition(col, line);
 
                 DisplayNumberArt(buffer, col, line + 2);
+
+                if (key.Key == ConsoleKey.X)
+                {
+                    Console.Clear();
+                    Menu menu = new Menu();
+                    menu.Start();
+                    return 0;
+                }
             }
 
             return buffer == "" ? 0 : int.Parse(buffer);
@@ -165,6 +179,9 @@ namespace ConsoleApp1
         public void RunCountdown(string label, int seconds, int mode)
             {
 
+            SoundPlayer ftbg = new SoundPlayer("focustimermusic.wav");
+            ftbg.Load();
+            ftbg.PlayLooping();
                 // --------------------------
                 // TIMER User Interface         
                 // --------------------------

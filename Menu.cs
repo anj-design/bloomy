@@ -28,20 +28,32 @@ namespace ConsoleApp1
                 styles.Exit
             };
         }
-
-        public void Show()
+        public void Background_Header()
         {
-            Console.Clear();
+            int line = 2;
+
+            foreach (var print in styles.Bloomy)
+            {
+                Console.WriteLine(print);
+            }
+        }
+
+
+
+        public void Start()
+        {
+
+        Console.Clear();
         SoundPlayer bg = new SoundPlayer("bgmusic1.wav");
         bg.Load();
-            bg.PlayLooping();
+        bg.PlayLooping();
             
             ConsoleKey key;
 
             do
             {
                 Console.Clear();
-
+                Background_Header();
                 DisplayMenu();
 
                 key = Console.ReadKey(true).Key;
@@ -97,18 +109,16 @@ namespace ConsoleApp1
         //     CENTERING FUNCTIONS
         // ---------------------------
 
-        private string CenterText(string text)
+        public string CenterText(string text)
         {
             int winWidth = Console.WindowWidth;
             int padding = Math.Max(0, (winWidth - text.Length) / 2);
             return new string(' ', padding) + text;
         }
 
+
         private void DisplayMenu()
         {
-            // ---------------------------
-            // Calculate vertical centering
-            // ---------------------------
 
             int totalLines = 0;
 
@@ -119,7 +129,7 @@ namespace ConsoleApp1
 
             int winHeight = Console.WindowHeight;
 
-            int topPadding = Math.Max(0, (winHeight - totalLines) / 2);
+            int topPadding = 2;
 
             // Print empty lines at the top to push content down
             for (int i = 0; i < topPadding; i++)

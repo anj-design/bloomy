@@ -35,31 +35,12 @@ namespace ConsoleApp1
             Console.Clear();
 
             simulator.Keyboard.ModifiedKeyStroke(VirtualKeyCode.CONTROL, VirtualKeyCode.SUBTRACT);
-            foreach (var line in styles.MotivPage)
-            {
-                Console.WriteLine(line);
-            }
-
-            Console.ReadKey();
-            Console.Clear();
 
             Menu menu = new Menu();
             while (true)
             {
-                //  foreach (var line in Design.Bloomi)
-                //{
-                //    Console.WriteLine(line);
-                //}
-                menu.Show();
-
+                menu.Start();
             }
-
-        }
-        public static void CuteMusic(string filepath)
-        {
-            SoundPlayer player = new SoundPlayer();
-            player.SoundLocation = filepath;
-            player.Play();
         }
     }
 }

@@ -19,13 +19,14 @@ namespace ConsoleApp1
 {
     class About
     {
+        
         public string[] Description = {
 @"            .--------------------------------------------------------------------------------------------------------------------------------------------.    ",
 @"           /  .-.                                                                                                                                    .-.  \   ",
-@"          |  /   \           Welcome to Bloomify! an engaging rod ctivity tool designed to help you cultivate discipline, mindfulness, and         /   \  |  ",
+@"          |  /   \           Welcome to Bloomify! an engaging rod activity tool designed to help you cultivate discipline, mindfulness, and         /   \  |  ",
 @"          | |\_.  |  consistent habits through a visually interactive virtual garden experience. By transforming time-tracking into a rewarding    |    /| |   ",
-@"          |\|  | /|       journey. Focus Timer turns each completed focus session into a thriving plant, while interruption ones—gently reinforcing  |\  | |/| ",
-@"          | `---' |                                     the value of commitment and accountability.                                                | `---' |  ",
+@"          |\|  | /|               journey. Focus Timer turns each completed focus session into a thriving plant.                                   |\  | |/| ",
+@"          | `---' |                                      Grow your Focus, Bloom your Mind.                                                         | `---' |  ",
 @"          |       |                                                                                                                                |       |  ",
 @"          |       |--------------------------------------------------------------------------------------------------------------------------------|       |  ",
 @"          \       |                                                                                                                                |       /  ",
@@ -39,14 +40,13 @@ namespace ConsoleApp1
 @"      ┊                                                                                                                                                    ┊",
 @"      ┊• Use arrow keys to move through the interface, interacting with visual elements in a distraction-free environment.                                 ┊",
 @"      ┊                                                                                                                                                    ┊",
-@"      ┊• As your timer runs, watch a plant or flower animation grow on-screen, motivating you to stay focused.Complete the session for a blooming plant;  ┊ ",
-@"      ┊  stop early, and it wilts, symbolizing the importance of finishing what you start.                                                                 ┊",
+@"      ┊• As your timer runs, watch a plant or flower animation grow on-screen, motivating you to stay focused. Complete the session for a blooming plant.  ┊ ",
 @"      ┊                                                                                                                                                    ┊",
-@"      ┊  Every session is automatically logged with details like date, duration, and outcome(bloom or wilt). Review your history to see how your focus    ┊ ",
+@"      ┊• Every session is automatically logged with details like date, duration, and outcome(bloom or wilt). Review your history to see how your focus     ┊ ",
 @"      ┊  habits evolve over time.                                                                                                                          ┊",
 @"      ┊                                                                                                                                                    ┊",
-@"      ┊  Successfully grown plants populate a dedicated calander garden–serving as a history of your progress, creating a meaningful, visual                ┊ ",
-@"      ┊   representation of your dedication.                                                                                                               ┊",
+@"      ┊• Successfully grown plants populate a dedicated note list as a history of your progress, creating a meaningful, visual representation              ┊ ",
+@"      ┊  of your dedication.                                                                                                                               ┊",
 @"      ┗━━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━•❃°•°❀°•°❃•━ ━•❃°•°❀°•°❃•━ ━•❃°•°❀°•°❃•━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━┛",
 };
         public string[] namesx = {
@@ -79,11 +79,12 @@ namespace ConsoleApp1
 @"       /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\",
 @"       \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/",        };
 
-        public int x = 0, y = 2;
+        public int x = 0, y = 19;
+
         public void showDescription()
         {
             Console.Clear();
-
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.SetCursorPosition(x, y);
             foreach (var d in Description)
             {
@@ -94,7 +95,9 @@ namespace ConsoleApp1
         }
         public void showHow()
         {
-            Console.SetCursorPosition(x, y + 11);
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.SetCursorPosition(x + 1, y);
             foreach (var e in How)
             {
                 Console.WriteLine(e);
@@ -103,8 +106,9 @@ namespace ConsoleApp1
         }
         public void showWho()
         {
-
-            Console.SetCursorPosition(x, y + 30);
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.SetCursorPosition(x, 5);
             foreach (var f in namesx)
             {
                 Console.WriteLine(f);
@@ -123,9 +127,12 @@ namespace ConsoleApp1
                 showHow();
                 key = Console.ReadKey();
                 showWho();
+                key = Console.ReadKey();
+                Menu menu = new Menu();
+                menu.Start();
             }
-            else if (key.Key == ConsoleKey.Escape)
-            {
+            else if (key.Key == ConsoleKey.X)
+            { 
                 return;
             }
         }
