@@ -85,7 +85,7 @@ namespace ConsoleApp1
             BreakBanner();
             int breakMin = (int)ReadNumberWithArt(col, line, BreakBanner);
 
-            for (int i = 0; i <= 10; i++)
+            for (int i = 0; i <= 9; i++)
             {
                 inputSimulator.Keyboard.ModifiedKeyStroke(WindowsInput.Native.VirtualKeyCode.CONTROL, WindowsInput.Native.VirtualKeyCode.OEM_MINUS);
             }
