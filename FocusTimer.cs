@@ -9,12 +9,17 @@ using WindowsInput;
 
 namespace ConsoleApp1
 {
-    
+
+    // Main class para sa Focus Timer functionality
+    // Dito nangyayari lahat ng timer operations, animations, at user interactions
     public class FocusTimer
     {
+        // Instance ng Styles class para ma-access yung lahat ng ASCII art designs
         public Styles styles = new Styles();
+        // Position variables para sa cursor placement sa console
         public int x = 0, y = 25;
-
+        // Method na nag-display ng "Press X to go back" message
+        // Simple lang, nag-clear ng screen tapos nag-print ng instruction
         public void showXr()
         {
             Console.Clear();
@@ -26,7 +31,8 @@ namespace ConsoleApp1
             }
         }
 
-
+        // Banner para sa Focus Timer setup screen
+        // Nag-display ng "FOCUS MINUTES" text sa ASCII art format
         public void FocusBanner()
         {
             string[] FocusBanner = {
@@ -36,11 +42,14 @@ namespace ConsoleApp1
             @" | |  \      /\     }| {_} |.-._} }      | |\ /| || || |\  || {_} |  | |  | {__ .-._} } O",
             @" `-'   `----'  `---' `-----'`----'       `-' ` `-'`-'`-' `-'`-----'  `-'  `----'`----'   "
 };
+            // Loop para i-print yung bawat line ng banner
             foreach (var line in FocusBanner)
             {
                 Console.WriteLine(line);
             }
         }
+        // Banner para sa Break Timer setup screen
+        // Same concept sa FocusBanner pero para sa break time
         public void BreakBanner()
         {
             string[] BreakBanner =
@@ -54,14 +63,14 @@ namespace ConsoleApp1
             {
                 Console.WriteLine(line);
             }
-            showXr();  
+            showXr();  // Tapos ipakita yung exit instruction 
         }
 
         public void Start()
         {
 
-            
 
+            // Initialize history para ma-save yung sessions later
             var history = new History();
             InputSimulator inputSimulator = new InputSimulator();
 
@@ -75,7 +84,7 @@ namespace ConsoleApp1
             int line = 7;
 
             Console.Clear();
-
+            // Set encoding to UTF8 para gumana yung special characters
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
             FocusBanner();

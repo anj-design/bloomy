@@ -36,6 +36,6 @@ namespace ConsoleApp1
             }
             Console.ReadKey();
 
-        }
-    }
+        }//eyyy finish na salamat sa leader naming napakabait
+    }//sir tapos na po
 }

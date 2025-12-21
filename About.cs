@@ -17,9 +17,12 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ConsoleApp1
 {
+    // Ito yung About class - dito naka-store lahat ng information tungkol sa app
+    // May tatlong main screens: description, how to use, at credits
     class About
     {
-        
+        // Array na naglalaman ng welcome message sa loob ng ASCII art box
+        // Ito yung unang makikita ng user pag pinindot nila yung about section
         public string[] Description = {
 @"            .--------------------------------------------------------------------------------------------------------------------------------------------.    ",
 @"           /  .-.                                                                                                                                    .-.  \   ",
@@ -33,6 +36,8 @@ namespace ConsoleApp1
 @"           \     /                                                                                                                                  \     /   ",
 @"            `---'                                                                                                                                    `---'    ",
 };
+        // Array para sa instructions kung paano gamitin ang Bloomify
+        // Step-by-step guide para hindi malito yung user
         public string[] How = {
 @"      ┏ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━•❃°•°❀°•°❃•━ ━•❃°•°❀°•°❃•━ ━•❃°•°❀°•°❃•━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━┓",
 @"      ┊  How It Works :                                                                                                                                    ┊",
@@ -79,13 +84,19 @@ namespace ConsoleApp1
 @"       /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\",
 @"       \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/",        };
 
+        // Variables para sa positioning ng cursor sa console
+        // x = horizontal position (0 means start from left edge)
+        // y = vertical position (19 means mag-start sa line 19 from top)
         public int x = 0, y = 19;
 
+        // Method na nag-display ng description screen
+        // Binubura muna yung console, tapos nag-set ng color at position bago i-print yung text
         public void showDescription()
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.SetCursorPosition(x, y);
+            // Loop through each line ng description at i-print lahat
             foreach (var d in Description)
             {
                 Console.WriteLine(d);
@@ -104,6 +115,8 @@ namespace ConsoleApp1
             }
 
         }
+        // Method para sa credits/contributors screen
+        // I-display yung mga pangalan ng contributors sa ASCII art format
         public void showWho()
         {
             Console.Clear();
@@ -115,7 +128,8 @@ namespace ConsoleApp1
             }
             Console.ReadKey();
         }
-
+        // Main method na nag-control ng flow ng About section
+        // Nag-aantay ng key press para mag-navigate through different screens
         public void DisplayAbout()
         {   
             var key = Console.ReadKey();
@@ -128,12 +142,13 @@ namespace ConsoleApp1
                 key = Console.ReadKey();
                 showWho();
                 key = Console.ReadKey();
+                // After lahat ng screens, bumalik sa main menu
                 Menu menu = new Menu();
                 menu.Start();
             }
             else if (key.Key == ConsoleKey.X)
             { 
-                return;
+                return;// Bumalik sa previous screen whahha
             }
         }
     }

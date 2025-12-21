@@ -5,8 +5,12 @@ using System.Text.Json;
 
 namespace ConsoleApp1
 {
+    // History class - dito nag-manage ng lahat ng focus sessions na natapos mo na
+    // May grid view ng flowers at detailed view ng bawat session
+
     public class History
     {
+        // Filename ng JSON file kung saan naka-save yung history
         private const string FileName = "history.json";
         public List<FocusSession> Sessions { get; private set; } = new List<FocusSession>();
 
@@ -23,7 +27,8 @@ namespace ConsoleApp1
  @"     \\|//   \\|///  \\\|//\\\|/// \|///  \\\|//  \\|//  \\\|//  \\|//   \\|///  \\\|//\\\|/// \|///  \\\|//  \\|//  \\\|//",
  @" ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
         };
-
+        // Banner na nag-display sa taas ng garden view
+        // "YOUR FLOWER COLLECTIONS" in ASCII art
         private string[] kinemeLang = new string[]
         {
 @"                                _  _ _____ __  __ ____    ____ __   _____ _    _ ____ ____     ___ _____ __   __   ____ ___ ____ ____ _____ _  _ ___ ",
@@ -32,7 +37,8 @@ namespace ConsoleApp1
 @"                                (__)(_____(______(_)\_)  (__) (____(_____(__/\__(____(_)\_)   \___(_____(____(____(____\___)(__)(____(_____(_)\_(___/",
         };
 
-        // Ito naman ang "Mini Icon" para sa Grid View
+        // Mini icon ng flower - ito yung lumalabas sa grid view
+        // Maliit na flower design para sa overview ng sessions
         private string[] iconArt = new string[]
         {          
 @"     _/ \ / \ / \_     ",
@@ -54,13 +60,15 @@ namespace ConsoleApp1
         {
             Load();
         }
-
+        // Method para mag-add ng new session sa history
+        // Automatically nag-save din sa file after adding
         public void AddSession(FocusSession session)
         {
-            Sessions.Add(session);
-            Save();
+            Sessions.Add(session);// dagdag sa list
+            Save();// I-save sa JSON file
         }
-
+        // Private method para mag-save ng sessions sa JSON file
+        // Nag-convert ng list to JSON format at nag-write sa file
         private void Save()
         {
             string json = JsonSerializer.Serialize(Sessions, new JsonSerializerOptions { WriteIndented = true });
